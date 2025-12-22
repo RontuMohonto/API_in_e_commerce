@@ -10,6 +10,8 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  int selected = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,30 +32,50 @@ class _AuthScreenState extends State<AuthScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Expanded(
-              child: Column(
-                spacing: 10,
-                children: [
-                  Text("Sign in"),
-                  Container(
-                    height: 2,
-                    width: MediaQuery.sizeOf(context).width,
-                    color: Colors.orange.shade400,
-                  )
-                ],
+              child: InkWell(
+                onTap: () {
+                  setState(() {
+                    selected = 1;
+                  });
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+
+                  spacing: 10,
+                  children: [
+                    Text("Sign in"),
+                    Container(
+                      height: 2,
+                      width: MediaQuery.sizeOf(context).width,
+                      color: selected == 1
+                          ? Colors.orange.shade400
+                          : Colors.grey.shade400,
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(
-
-              child: Column(
-                spacing: 10,
-                children: [
-                  Text("Sign in"),
-                  Container(
-                    height: 2,
-                    width: MediaQuery.sizeOf(context).width,
-                    color: Colors.orange,
-                  )
-                ],
+              child: InkWell(
+                onTap: () {
+                  setState(() {
+                    selected = 2;
+                  });
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  spacing: 10,
+                  children: [
+                    Text("Sign in"),
+                    Container(
+                      height: 2,
+                      width: MediaQuery.sizeOf(context).width,
+                      color: selected == 2
+                          ? Colors.orange.shade400
+                          : Colors.grey.shade400,
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
