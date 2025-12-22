@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
+import 'Tabbar/tabbar.dart';
+
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
 
@@ -27,56 +29,25 @@ class _AuthScreenState extends State<AuthScreen> {
 
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Expanded(
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    selected = 1;
-                  });
-                },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-
-                  spacing: 10,
-                  children: [
-                    Text("Sign in"),
-                    Container(
-                      height: 2,
-                      width: MediaQuery.sizeOf(context).width,
-                      color: selected == 1
-                          ? Colors.orange.shade400
-                          : Colors.grey.shade400,
-                    ),
-                  ],
-                ),
-              ),
+            TabbarWidget(
+              onTap: () {
+                selected = 1;
+                setState(() {});
+              },
+              selected: selected,
+              title: 'Sign in',
             ),
-            Expanded(
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    selected = 2;
-                  });
-                },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  spacing: 10,
-                  children: [
-                    Text("Sign in"),
-                    Container(
-                      height: 2,
-                      width: MediaQuery.sizeOf(context).width,
-                      color: selected == 2
-                          ? Colors.orange.shade400
-                          : Colors.grey.shade400,
-                    ),
-                  ],
-                ),
-              ),
+            TabbarWidget(
+              onTap: () {
+                selected = 2;
+                setState(() {});
+              },
+              selected: selected,
+              title: 'Sign up',
             ),
           ],
         ),
