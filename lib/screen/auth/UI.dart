@@ -1,8 +1,7 @@
-import 'dart:developer';
-
+import 'package:dada_garments_full_with_api/screen/auth/log/login.dart';
 import 'package:flutter/material.dart';
 
-import 'Tabbar/tabbar.dart';
+import 'widgets/tabbar.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -30,25 +29,35 @@ class _AuthScreenState extends State<AuthScreen> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        child: Column(
+          spacing: 10,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TabbarWidget(
-              onTap: () {
-                selected = 1;
-                setState(() {});
-              },
-              selected: selected,
-              title: 'Sign in',
+            Row(
+              children: [
+                TabbarWidget(
+                  index: 1,
+                  selected: selected,
+                  title: 'Sign in',
+                  onTap: () {
+                    setState(() {
+                      selected = 1;
+                    });
+                  },
+                ),
+                TabbarWidget(
+                  index: 2,
+                  selected: selected,
+                  title: 'Sign up',
+                  onTap: () {
+                    setState(() {
+                      selected = 2;
+                    });
+                  },
+                ),
+              ],
             ),
-            TabbarWidget(
-              onTap: () {
-                selected = 2;
-                setState(() {});
-              },
-              selected: selected,
-              title: 'Sign up',
-            ),
+            LoginPage()
           ],
         ),
       ),

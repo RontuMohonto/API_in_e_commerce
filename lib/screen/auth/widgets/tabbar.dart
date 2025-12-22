@@ -6,11 +6,13 @@ class TabbarWidget extends StatelessWidget {
     required this.onTap,
     required this.selected,
     required this.title,
+    required this.index,
   });
 
   final VoidCallback onTap;
   final int selected;
   final String title;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class TabbarWidget extends StatelessWidget {
             Container(
               height: 2,
               width: MediaQuery.sizeOf(context).width,
-              color: selected == 1
+              color: selected == index
                   ? Colors.orange.shade400
                   : Colors.grey.shade400,
             ),
