@@ -79,13 +79,18 @@ class _LoginPageState extends State<LoginPage> {
             height: 60,
             width: MediaQuery.sizeOf(context).width,
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: Color(0xffF4A758),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Login")
+                CustomText(
+                  text: "Login",
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                  color: Colors.white,
+                ),
               ],
             ),
           ),

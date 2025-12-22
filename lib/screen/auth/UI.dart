@@ -29,36 +29,39 @@ class _AuthScreenState extends State<AuthScreen> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        child: Column(
-          spacing: 10,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                TabbarWidget(
-                  index: 1,
-                  selected: selected,
-                  title: 'Sign in',
-                  onTap: () {
-                    setState(() {
-                      selected = 1;
-                    });
-                  },
-                ),
-                TabbarWidget(
-                  index: 2,
-                  selected: selected,
-                  title: 'Sign up',
-                  onTap: () {
-                    setState(() {
-                      selected = 2;
-                    });
-                  },
-                ),
-              ],
-            ),
-            LoginPage(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            spacing: 10,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  TabbarWidget(
+                    index: 1,
+                    selected: selected,
+                    title: 'Sign in',
+                    onTap: () {
+                      setState(() {
+                        selected = 1;
+                      });
+                    },
+                  ),
+                  TabbarWidget(
+                    index: 2,
+                    selected: selected,
+                    title: 'Sign up',
+                    onTap: () {
+                      setState(() {
+                        selected = 2;
+                      });
+                    },
+                  ),
+                ],
+              ),
+               selected ==1 ? LoginPage() : Text("data"),
+            ],
+          ),
         ),
       ),
     );
