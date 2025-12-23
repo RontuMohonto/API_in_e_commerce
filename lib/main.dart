@@ -2,6 +2,7 @@ import 'package:dada_garments_full_with_api/screen/auth/UI.dart';
 import 'package:dada_garments_full_with_api/screen/auth/reg/RegSc.dart';
 import 'package:dada_garments_full_with_api/screen/splash/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +14,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: AuthScreen());
+    return MaterialApp(
+      builder: EasyLoading.init(),
+
+      debugShowCheckedModeBanner: false,
+      home: AuthScreen(),
+    );
   }
 }

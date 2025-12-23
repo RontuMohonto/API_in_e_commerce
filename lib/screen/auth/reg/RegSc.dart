@@ -23,6 +23,7 @@ class _RegPageState extends State<RegPage> {
   final TextEditingController nameC = TextEditingController();
   final TextEditingController numberC = TextEditingController();
   final TextEditingController passC = TextEditingController();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -108,20 +109,30 @@ class _RegPageState extends State<RegPage> {
           ),
           SizedBox(height: 10),
 
-          CustomButton_widget(
-            title: 'Register',
-            onTap: () {
-              // if (!_formKey.currentState!.validate()) {
-              //   return;
-              // }
-              var a = {
-                "name": nameC.text,
-                "phone": numberC.text,
-                "password": passC.text,
-              };
-              RegController().CreateAccoutFunction();
-            },
-          ),
+          isLoading == true
+              ? Center(
+                  child: CircularProgressIndicator(color: Color(0xffFE4546)),
+                )
+              : CustomButton_widget(
+                  title: 'Register',
+                  onTap: () async {
+                    // if (!_formKey.currentState!.validate()) {
+                    //   return;
+                    // }
+                    var a = {
+                      "name": nameC.text,
+                      "phone": numberC.text,
+                      "password": passC.text,
+                    };
+                    isLoading = true;
+                    setState(() {});
+                    bool status = await RegController().CreateAccoutFunction(
+                      data: a,
+                    );
+                    isLoading = false;
+                    setState(() {});
+                  },
+                ),
         ],
       ),
     );
