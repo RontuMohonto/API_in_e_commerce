@@ -81,7 +81,7 @@ class _RegPageState extends State<RegPage> {
                 return "";
               }
             },
-            title: '',
+            title: 'number',
           ),
 
           //password validator

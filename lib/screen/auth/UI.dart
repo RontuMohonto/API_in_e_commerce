@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../../controller/widgets/tabbar.dart';
 
-
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
 
