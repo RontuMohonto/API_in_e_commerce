@@ -29,7 +29,7 @@ class TabbarWidget extends StatelessWidget {
               height: 2,
               width: MediaQuery.sizeOf(context).width,
               color: selected == index
-                  ? Colors.orange.shade400
+                  ? Color(0xffFF4748)
                   : Colors.grey.shade400,
             ),
           ],

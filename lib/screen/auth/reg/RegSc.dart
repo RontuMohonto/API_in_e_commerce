@@ -1,13 +1,14 @@
+import 'dart:convert';
 import 'dart:developer';
 
+import 'package:dada_garments_full_with_api/controller/auth/regController.dart';
 import 'package:flutter/material.dart';
 
 import '../../../controller/widgets/SignUpName_Widget.dart';
 import '../../../controller/widgets/SignUpNumber_widget.dart';
 import '../../../controller/widgets/SignUpPassword_widget.dart';
+import '../../../controller/widgets/custom_button.dart';
 import '../../../controller/widgets/text.dart';
-
-
 
 class RegPage extends StatefulWidget {
   const RegPage({super.key});
@@ -28,7 +29,6 @@ class _RegPageState extends State<RegPage> {
     return Form(
       key: _formKey,
       child: Column(
-        spacing: 10,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomText(
@@ -54,9 +54,9 @@ class _RegPageState extends State<RegPage> {
             nameC: nameC,
             validator: (v) {
               if (v == null || v.isEmpty) {
-                return "please enter phone";
+                return "please enter name";
               } else {
-                return "";
+                return null;
               }
             },
             title: 'name',
@@ -78,7 +78,7 @@ class _RegPageState extends State<RegPage> {
               } else if (!RegExp(r'^(01)[0-9]{9}$').hasMatch((v))) {
                 return "please enter a valid number";
               } else {
-                return "";
+                return null;
               }
             },
             title: 'number',
@@ -101,36 +101,26 @@ class _RegPageState extends State<RegPage> {
               ).hasMatch((v))) {
                 return "Password must contain A-Z, a-z, 0-9, special character & minimum 8 characters";
               } else {
-                return "";
+                return null;
               }
             },
             title: 'password',
           ),
           SizedBox(height: 10),
 
-          InkWell(
+          CustomButton_widget(
+            title: 'Register',
             onTap: () {
-              log("========");
+              // if (!_formKey.currentState!.validate()) {
+              //   return;
+              // }
+              var a = {
+                "name": nameC.text,
+                "phone": numberC.text,
+                "password": passC.text,
+              };
+              RegController().CreateAccoutFunction();
             },
-            child: Container(
-              height: 60,
-              width: MediaQuery.sizeOf(context).width,
-              decoration: BoxDecoration(
-                color: Color(0xffF4A758),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomText(
-                    text: "Register",
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18,
-                    color: Colors.black,
-                  ),
-                ],
-              ),
-            ),
           ),
         ],
       ),

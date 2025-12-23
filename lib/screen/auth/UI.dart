@@ -39,22 +39,23 @@ class _AuthScreenState extends State<AuthScreen> {
               Row(
                 children: [
                   TabbarWidget(
-                    index: 1,
-                    selected: selected,
-                    title: 'Sign in',
-                    onTap: () {
-                      setState(() {
-                        selected = 1;
-                      });
-                    },
-                  ),
-                  TabbarWidget(
                     index: 2,
                     selected: selected,
                     title: 'Sign up',
                     onTap: () {
                       setState(() {
                         selected = 2;
+                      });
+                    },
+                  ),
+
+                  TabbarWidget(
+                    index: 1,
+                    selected: selected,
+                    title: 'Sign in',
+                    onTap: () {
+                      setState(() {
+                        selected = 1;
                       });
                     },
                   ),

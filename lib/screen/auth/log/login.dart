@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../controller/widgets/text.dart';
@@ -54,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          SizedBox(height: 10),
+          CustomText(text: "password",color: Colors.black,),
           TextFormField(
             validator: (v) {
               if (v == null || v.isEmpty) {
@@ -75,24 +78,11 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           SizedBox(height: 10),
-          Container(
-            height: 60,
-            width: MediaQuery.sizeOf(context).width,
-            decoration: BoxDecoration(
-              color: Color(0xffF4A758),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomText(
-                  text: "Login",
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18,
-                  color: Colors.black,
-                ),
-              ],
-            ),
+          CustomButton_widget(
+            title: "Login",
+            onTap: () {
+              log("=========");
+            },
           ),
         ],
       ),
