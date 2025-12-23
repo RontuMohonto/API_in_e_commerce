@@ -1,4 +1,5 @@
 import 'package:dada_garments_full_with_api/screen/auth/log/login.dart';
+import 'package:dada_garments_full_with_api/screen/auth/reg/RegSc.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/tabbar.dart';
@@ -11,7 +12,7 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  int selected = 1;
+  int selected = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ],
               ),
-               selected ==1 ? LoginPage() : Text("data"),
+              selected == 1 ? LoginPage() : RegPage(),
             ],
           ),
         ),
