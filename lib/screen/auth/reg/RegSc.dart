@@ -2,7 +2,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../widgets/text.dart';
+import '../../../controller/widgets/SignUpName_Widget.dart';
+import '../../../controller/widgets/SignUpNumber_widget.dart';
+import '../../../controller/widgets/SignUpPassword_widget.dart';
+import '../../../controller/widgets/text.dart';
+
+
 
 class RegPage extends StatefulWidget {
   const RegPage({super.key});
@@ -37,16 +42,16 @@ class _RegPageState extends State<RegPage> {
             fontWeight: FontWeight.w600,
           ),
           SizedBox(height: 15),
+
+          //name form field
           CustomText(
             text: "Name",
             fontSize: 22,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
-
-          //name form field
-          TextFormField(
-            controller: nameC,
+          NameFormField(
+            nameC: nameC,
             validator: (v) {
               if (v == null || v.isEmpty) {
                 return "please enter phone";
@@ -54,12 +59,7 @@ class _RegPageState extends State<RegPage> {
                 return "";
               }
             },
-            decoration: InputDecoration(
-              hintText: "please enter your phone name",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
+            title: 'name',
           ),
 
           CustomText(
@@ -70,8 +70,8 @@ class _RegPageState extends State<RegPage> {
           ),
 
           //number formfield
-          TextFormField(
-            controller: numberC,
+          NumberFormField(
+            numberC: numberC,
             validator: (v) {
               if (v == null || v.isEmpty) {
                 return "please enter phone";
@@ -81,12 +81,7 @@ class _RegPageState extends State<RegPage> {
                 return "";
               }
             },
-            decoration: InputDecoration(
-              hintText: "please enter your password",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
+            title: '',
           ),
 
           //password validator
@@ -96,8 +91,8 @@ class _RegPageState extends State<RegPage> {
             fontWeight: FontWeight.w600,
             color: Colors.black,
           ),
-          TextFormField(
-            controller: passC,
+          PasswordForm_widget(
+            passC: passC,
             validator: (v) {
               if (v == null || v.isEmpty) {
                 return "please enter password";
@@ -109,12 +104,7 @@ class _RegPageState extends State<RegPage> {
                 return "";
               }
             },
-            decoration: InputDecoration(
-              hintText: "please enter your password",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
+            title: 'password',
           ),
           SizedBox(height: 10),
 

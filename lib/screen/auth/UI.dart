@@ -2,7 +2,8 @@ import 'package:dada_garments_full_with_api/screen/auth/log/login.dart';
 import 'package:dada_garments_full_with_api/screen/auth/reg/RegSc.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/tabbar.dart';
+import '../../controller/widgets/tabbar.dart';
+
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
