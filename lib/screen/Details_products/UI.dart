@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
 import 'package:flutter/material.dart';
 
 class Details extends StatefulWidget {
@@ -27,8 +28,8 @@ class _DetailsState extends State<Details> {
             padding: EdgeInsets.only(top: 10),
             child: CarouselSlider(
               options: CarouselOptions(
-                height: 230.0,
-              git   autoPlay: true,
+                height: 200.0,
+                autoPlay: true,
                 aspectRatio: 1,
               ),
               items: sl.map((i) {
@@ -38,12 +39,96 @@ class _DetailsState extends State<Details> {
                       width: MediaQuery.of(context).size.width,
                       margin: EdgeInsets.symmetric(horizontal: 5.0),
                       decoration: BoxDecoration(
-                        image: DecorationImage(image: NetworkImage("${i}")),
+                        image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: NetworkImage("${i}"),
+                        ),
                       ),
                     );
                   },
                 );
               }).toList(),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              color: Colors.green.shade100,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //Title
+                    CustomText(
+                      text: "Men's Sports Mesh Head cap",
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.deepPurple,
+                    ),
+                    //SKU
+                    Row(
+                      children: [
+                        CustomText(
+                          text: "SKU           :",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        CustomText(
+                          text: "   AP-3PT-MESH",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),
+                    //brand
+                    Row(
+                      children: [
+                        CustomText(
+                          text: "Brand        :",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        CustomText(
+                          text: "   ActiveGear",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),
+                    //Category
+                    Row(
+                      children: [
+                        CustomText(
+                          text: "Category  :",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        CustomText(
+                          text: "   Head Cap",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),
+                    //Stock
+                    Row(
+                      children: [
+                        CustomText(
+                          text: "stock        :",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        CustomText(
+                          text: "   500 pcs",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
