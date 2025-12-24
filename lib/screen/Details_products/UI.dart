@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dada_garments_full_with_api/controller/details_controller/Details_controller_API.dart';
 import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +20,18 @@ class _DetailsState extends State<Details> {
     "https://i.ytimg.com/vi/XxYqv-_OUzk/maxresdefault.jpg",
     "https://img.freepik.com/free-psd/e-commerce-flat-design-youtube-banner_23-2151267937.jpg?semt=ais_hybrid&w=740&q=80",
   ];
+  Map data = {};
+  fatchData() async {
+    data = await GetProductDetails().getData();
+    log("========Data : ${data}=========");
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    fatchData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +77,7 @@ class _DetailsState extends State<Details> {
                   children: [
                     //Title
                     CustomText(
-                      text: "Men's Sports Mesh Head cap",
+                      text: "${data['title']}",
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       color: Colors.deepPurple,
@@ -76,7 +91,7 @@ class _DetailsState extends State<Details> {
                           color: Colors.black,
                         ),
                         CustomText(
-                          text: "   AP-3PT-MESH",
+                          text: "   ${data['sku']}",
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
@@ -91,7 +106,7 @@ class _DetailsState extends State<Details> {
                           color: Colors.black,
                         ),
                         CustomText(
-                          text: "   ActiveGear",
+                          text: "   ${data['brand']}",
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
@@ -106,7 +121,7 @@ class _DetailsState extends State<Details> {
                           color: Colors.black,
                         ),
                         CustomText(
-                          text: "   Head Cap",
+                          text: "   ${data['category']}",
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
@@ -121,7 +136,7 @@ class _DetailsState extends State<Details> {
                           color: Colors.black,
                         ),
                         CustomText(
-                          text: "   500 pcs",
+                          text: "   ${data['stock']}",
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
@@ -132,11 +147,13 @@ class _DetailsState extends State<Details> {
                     Row(
                       children: [
                         CustomText(text: "Price        :", color: Colors.black),
-                        CustomText(text: "    800", color: Colors.black),
-                        SizedBox(
-                          width: 10,
+                        CustomText(text: "    ${data['price']}", color: Colors.black),
+                        SizedBox(width: 10),
+                        CustomText(
+                          text: "${data['old_price']}",
+                          color: Colors.grey,
+                          decorationText: TextDecoration.lineThrough,
                         ),
-                        CustomText(text: "900", color: Colors.grey,decorationText: TextDecoration.lineThrough,),
                       ],
                     ),
 
@@ -148,12 +165,12 @@ class _DetailsState extends State<Details> {
                         Icon(Icons.star, color: Colors.amber),
                         Icon(Icons.star, color: Colors.amber),
                         Icon(Icons.star, color: Colors.amber),
-                        CustomText(text: "(102 Reviews)"),
+                        CustomText(text: "(${data['review_count']})"),
                       ],
                     ),
 
-                    CustomText(text: "Details      :",color: Colors.black,),
-                    CustomText(text: "Details",color: Colors.black,),
+                    CustomText(text: "Details      :", color: Colors.black),
+                    CustomText(text: "${data['description']}", color: Colors.black),
                   ],
                 ),
               ),
