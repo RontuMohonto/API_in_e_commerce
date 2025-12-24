@@ -7,12 +7,14 @@ import 'package:http/http.dart' as http;
 class GetProductController {
   Future<List> getProduct() async {
     try {
-      Uri url = Uri.parse("https://b4.coderangon.com/api/products");
+     Uri url = Uri.parse("https://b4.coderangon.com/api/products");
+     //  Uri url = Uri.parse("https://b4.coderangon.com/api/products/category/4");
       var response = await http.get(url);
 
       if (response.statusCode == 200) {
         var jsonData = jsonDecode(response.body);
         return jsonData['data'];
+
       } else {
         EasyLoading.showError("Something went wrong");
       }

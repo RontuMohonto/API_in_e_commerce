@@ -36,8 +36,8 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Color(0xffFF4444),
-        title: Text("Product's", style: TextStyle(color: Colors.white)),
+        // backgroundColor: Colors.green.shade100,
+        title: Text("Product's", style: TextStyle(color: Colors.black)),
       ),
       backgroundColor: Colors.white,
       body: isLoading == true
@@ -46,10 +46,10 @@ class _ProductScreenState extends State<ProductScreen> {
               itemCount: ProductLIst.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: .68,
+                childAspectRatio: .65,
               ),
               itemBuilder: (context, index) => Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 child: Product_Card_widget(AllData: ProductLIst[index]),
               ),
             ),

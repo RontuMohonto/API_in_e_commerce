@@ -1,3 +1,4 @@
+import 'package:dada_garments_full_with_api/screen/Details_products/UI.dart';
 import 'package:dada_garments_full_with_api/screen/auth/UI.dart';
 import 'package:dada_garments_full_with_api/screen/auth/reg/RegSc.dart';
 import 'package:dada_garments_full_with_api/screen/splash/splash.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       builder: EasyLoading.init(),
 
       debugShowCheckedModeBanner: false,
-      home: Splash(),
+      home: Details(),
     );
   }
 }

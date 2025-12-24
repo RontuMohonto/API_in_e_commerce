@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
+import 'package:dada_garments_full_with_api/screen/ProductScreen/UI.dart';
 import 'package:flutter/material.dart';
 
 import '../../../controller/auth/loginController.dart';
@@ -51,11 +52,11 @@ class _LoginPageState extends State<LoginPage> {
           // login page phone number input
           Login_phone_field(phoneNumberController: phoneNumberController),
 
-          CustomText(text: "password", color: Colors.black),
+          CustomText(text: "password", color: Colors.black, fontSize: 16),
           login_password_form(
             PasswordController: PasswordController,
             validator: (value) {},
-            title: 'pleasse enter yourt password',
+            title: 'pleasse enter your password',
           ),
           SizedBox(height: 10),
 
@@ -68,13 +69,18 @@ class _LoginPageState extends State<LoginPage> {
                   onTap: () async {
                     isLoading = true;
                     setState(() {});
-                    await LoginController.login(
+                    var status = await LoginController.login(
                       phone: phoneNumberController.text,
                       password: PasswordController.text,
                     );
+                    log("=======${status}====");
                     isLoading = false;
                     setState(() {});
+                    if (status== true){
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c)=> ProductScreen()));
+                    }
                   },
+
                 ),
         ],
       ),

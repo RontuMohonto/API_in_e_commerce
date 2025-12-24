@@ -46,6 +46,7 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
                 CustomText(
                   text: widget.AllData['title'],
                   maxLines: 2,
+
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
