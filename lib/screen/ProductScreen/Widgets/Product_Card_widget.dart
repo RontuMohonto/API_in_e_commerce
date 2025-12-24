@@ -1,10 +1,18 @@
+import 'dart:developer';
+
+import 'package:dada_garments_full_with_api/controller/products/product_API.dart';
 import 'package:flutter/material.dart';
 
 import '../../../controller/widgets/text.dart';
 
-class Product_Card_widget extends StatelessWidget {
+class Product_Card_widget extends StatefulWidget {
   const Product_Card_widget({super.key});
 
+  @override
+  State<Product_Card_widget> createState() => _Product_Card_widgetState();
+}
+
+class _Product_Card_widgetState extends State<Product_Card_widget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
