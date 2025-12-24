@@ -22,6 +22,8 @@ class _SplashState extends State<Splash> {
         context,
         MaterialPageRoute(builder: (context) => AuthScreen()),
       );
+    }else {
+      log("=======Found : $t===");
     }
   }
 
