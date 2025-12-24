@@ -53,10 +53,11 @@ class _DetailsState extends State<Details> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
-              color: Colors.green.shade100,
+              color: Colors.green.shade50,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Column(
+                  spacing: 5,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //Title
@@ -126,6 +127,33 @@ class _DetailsState extends State<Details> {
                         ),
                       ],
                     ),
+
+                    //price
+                    Row(
+                      children: [
+                        CustomText(text: "Price        :", color: Colors.black),
+                        CustomText(text: "    800", color: Colors.black),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        CustomText(text: "900", color: Colors.grey,decorationText: TextDecoration.lineThrough,),
+                      ],
+                    ),
+
+                    //Ratings
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: Colors.amber),
+                        Icon(Icons.star, color: Colors.amber),
+                        Icon(Icons.star, color: Colors.amber),
+                        Icon(Icons.star, color: Colors.amber),
+                        Icon(Icons.star, color: Colors.amber),
+                        CustomText(text: "(102 Reviews)"),
+                      ],
+                    ),
+
+                    CustomText(text: "Details      :",color: Colors.black,),
+                    CustomText(text: "Details",color: Colors.black,),
                   ],
                 ),
               ),
