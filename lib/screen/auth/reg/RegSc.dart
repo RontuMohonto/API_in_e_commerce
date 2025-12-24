@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+
 
 import 'package:dada_garments_full_with_api/controller/auth/regController.dart';
 import 'package:flutter/material.dart';

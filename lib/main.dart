@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       builder: EasyLoading.init(),
 
       debugShowCheckedModeBanner: false,
-      home: AuthScreen(),
+      home: Splash(),
     );
   }
 }

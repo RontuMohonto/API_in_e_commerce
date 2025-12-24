@@ -20,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController PasswordController = TextEditingController();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -57,13 +58,24 @@ class _LoginPageState extends State<LoginPage> {
             title: 'pleasse enter yourt password',
           ),
           SizedBox(height: 10),
-          CustomButton_widget(
-            title: "Login",
-            onTap: () {
-              log("=====${PasswordController.text}====");
-              LoginController().login(phone: phoneNumberController.text, password: PasswordController.text);
-            },
-          ),
+
+          isLoading == true
+              ? Center(
+                  child: CircularProgressIndicator(color: Color(0xffFF4444)),
+                )
+              : CustomButton_widget(
+                  title: "Login",
+                  onTap: () async {
+                    isLoading = true;
+                    setState(() {});
+                    await LoginController.login(
+                      phone: phoneNumberController.text,
+                      password: PasswordController.text,
+                    );
+                    isLoading = false;
+                    setState(() {});
+                  },
+                ),
         ],
       ),
     );
