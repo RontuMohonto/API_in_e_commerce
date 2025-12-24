@@ -4,6 +4,8 @@ import 'package:dada_garments_full_with_api/screen/auth/UI.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import '../ProductScreen/UI.dart';
+
 class Splash extends StatefulWidget {
   const Splash({super.key});
 
@@ -23,7 +25,10 @@ class _SplashState extends State<Splash> {
         MaterialPageRoute(builder: (context) => AuthScreen()),
       );
     }else {
-      log("=======Found : $t===");
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ProductScreen()),
+      );
     }
   }
 

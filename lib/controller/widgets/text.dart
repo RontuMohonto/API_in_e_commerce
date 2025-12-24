@@ -8,6 +8,7 @@ class CustomText extends StatelessWidget {
     this.fontWeight,
     this.maxLines,
     this.color,
+    this.decorationText,
   });
 
   final String text;
@@ -15,6 +16,8 @@ class CustomText extends StatelessWidget {
   final FontWeight? fontWeight;
   final int? maxLines;
   final Color? color;
+  final  decorationText;
+
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -25,6 +28,9 @@ class CustomText extends StatelessWidget {
         fontSize: fontSize ?? 22,
         color: color ?? Colors.grey,
         fontWeight: fontWeight ?? FontWeight.w600,
+        decoration: decorationText != null
+            ? TextDecoration.lineThrough
+            : TextDecoration.none,
       ),
     );
   }
