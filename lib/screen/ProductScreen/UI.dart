@@ -43,13 +43,14 @@ class _ProductScreenState extends State<ProductScreen> {
       body: isLoading == true
           ? Center(child: CircularProgressIndicator(color: Color(0xffFF4444)))
           : GridView.builder(
+              itemCount: ProductLIst.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: .7,
+                childAspectRatio: .68,
               ),
               itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Product_Card_widget(),
+                padding: EdgeInsets.all(8.0),
+                child: Product_Card_widget(AllData: ProductLIst[index]),
               ),
             ),
     );

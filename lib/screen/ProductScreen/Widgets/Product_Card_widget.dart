@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import '../../../controller/widgets/text.dart';
 
 class Product_Card_widget extends StatefulWidget {
-  const Product_Card_widget({super.key});
+  const Product_Card_widget({super.key, this.AllData});
+
+  final dynamic AllData;
 
   @override
   State<Product_Card_widget> createState() => _Product_Card_widgetState();
@@ -15,6 +17,8 @@ class Product_Card_widget extends StatefulWidget {
 class _Product_Card_widgetState extends State<Product_Card_widget> {
   @override
   Widget build(BuildContext context) {
+    log(">>> ${widget.AllData['title']}");
+
     return Stack(
       children: [
         Card(
@@ -23,7 +27,7 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
             padding: EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 3,
+              spacing: 6,
               children: [
                 Container(
                   height: 150,
@@ -31,9 +35,7 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: NetworkImage(
-                        "https://images.pexels.com/photos/6540996/pexels-photo-6540996.jpeg?cs=srgb&dl=pexels-ox-street-3848035-6540996.jpg&fm=jpg",
-                      ),
+                      image: NetworkImage("https://eplay.coderangon.com/public/storage/${widget.AllData['image']}"),
                     ),
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(15),
@@ -42,7 +44,8 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
                   ),
                 ), //image
                 CustomText(
-                  text: "Party Borkha Abaya Koliza",
+                  text: widget.AllData['title'],
+                  maxLines: 2,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
@@ -52,13 +55,13 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
                   spacing: 10,
                   children: [
                     CustomText(
-                      text: "800",
+                      text: widget.AllData['price'],
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
                     ),
                     CustomText(
-                      text: "600",
+                      text: widget.AllData['old_price'],
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                       color: Colors.grey,
