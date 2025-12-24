@@ -107,7 +107,7 @@ class _RegPageState extends State<RegPage> {
             },
             title: 'password',
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
 
           isLoading == true
               ? Center(

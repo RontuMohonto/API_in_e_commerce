@@ -3,6 +3,9 @@ import 'dart:developer';
 import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
+import '../../../controller/auth/loginController.dart';
+import '../../../controller/login_Phone_widgets/password_field.dart';
+import '../../../controller/login_Phone_widgets/phonefield.dart';
 import '../../../controller/widgets/text.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,6 +17,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController PasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,48 +46,22 @@ class _LoginPageState extends State<LoginPage> {
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
-          TextFormField(
-            validator: (v) {
-              if (v == null || v.isEmpty) {
-                return "please enter phone";
-              } else if (!RegExp(r'^(01)[0-9]{9}$').hasMatch((v))) {
-                return "please enter a valid number";
-              } else {
-                return "";
-              }
-            },
-            decoration: InputDecoration(
-              hintText: "please enter your phone number",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-          CustomText(text: "password",color: Colors.black,),
-          TextFormField(
-            validator: (v) {
-              if (v == null || v.isEmpty) {
-                return "please enter password";
-              } else if (!RegExp(
-                r'^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,}$',
-              ).hasMatch((v))) {
-                return "Password must contain A-Z, a-z, 0-9, special character & minimum 8 characters";
-              } else {
-                return "";
-              }
-            },
-            decoration: InputDecoration(
-              hintText: "please enter your phone password",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
+
+          // login page phone number input
+          Login_phone_field(phoneNumberController: phoneNumberController),
+
+          CustomText(text: "password", color: Colors.black),
+          login_password_form(
+            PasswordController: PasswordController,
+            validator: (value) {},
+            title: 'pleasse enter yourt password',
           ),
           SizedBox(height: 10),
           CustomButton_widget(
             title: "Login",
             onTap: () {
-              log("=========");
+              log("=====${PasswordController.text}====");
+              LoginController().login(phone: phoneNumberController.text, password: PasswordController.text);
             },
           ),
         ],
