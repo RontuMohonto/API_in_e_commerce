@@ -46,7 +46,7 @@ class _DetailsState extends State<Details> {
           : Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 10),
+                  padding: EdgeInsets.only(top: 10, left: 20, right: 20),
                   child: CarouselSlider(
                     options: CarouselOptions(
                       height: 200.0,
@@ -84,9 +84,10 @@ class _DetailsState extends State<Details> {
                           //Title
                           CustomText(
                             text: "${data['title']}",
-                            fontSize: 30,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Colors.deepPurple,
+                            maxLines: 2,
                           ),
                           //SKU
                           Row(
