@@ -6,7 +6,10 @@ import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
 import 'package:flutter/material.dart';
 
 class Details extends StatefulWidget {
-  const Details({super.key});
+  const Details({super.key, required this.Pid});
+
+
+  final int Pid;
 
   @override
   State<Details> createState() => _DetailsState();
@@ -28,7 +31,7 @@ class _DetailsState extends State<Details> {
   fatchData() async {
     isLoading = true;
     setState(() {});
-    data = await GetProductDetails().getData();
+    data = await GetProductDetails().getData(id: widget.Pid);
     if (data.isNotEmpty) {
       for (var i in data['gallery']) {
         imgList.add(i);
@@ -72,7 +75,7 @@ class _DetailsState extends State<Details> {
                                 fit: BoxFit.fill,
                                 // image: NetworkImage("${i}"),
                                 image: NetworkImage(
-                                  "https://b4.coderangon.com/public/storage/products/gallery/xx0m21Vh28OIOxDeviEbW2jef6WCC5pmvOP7WFGN.jpg",
+                                  "https://b4.coderangon.com/public/storage/$i",
                                 ),
                               ),
                             ),

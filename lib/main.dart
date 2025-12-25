@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       builder: EasyLoading.init(),
 
       debugShowCheckedModeBanner: false,
-      home: Details(),
+      home: Splash(),
     );
   }
 }

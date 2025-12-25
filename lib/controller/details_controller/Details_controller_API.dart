@@ -4,9 +4,9 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 class GetProductDetails {
-  Future<Map> getData() async {
+  Future<Map> getData({required int id}) async {
     try {
-      Uri url = Uri.parse("https://b4.coderangon.com/api/products/1");
+      Uri url = Uri.parse("https://b4.coderangon.com/api/products/$id");
       var response = await http.get(url);
       if (response.statusCode == 200) {
         var jsonData = jsonDecode(response.body);
