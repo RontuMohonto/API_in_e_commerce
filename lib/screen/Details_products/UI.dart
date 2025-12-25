@@ -21,11 +21,19 @@ class _DetailsState extends State<Details> {
     "https://img.freepik.com/free-psd/e-commerce-flat-design-youtube-banner_23-2151267937.jpg?semt=ais_hybrid&w=740&q=80",
   ];
   Map data = {};
+
   bool isLoading = false;
+  List<String> imgList = [];
+
   fatchData() async {
     isLoading = true;
     setState(() {});
     data = await GetProductDetails().getData();
+    if (data.isNotEmpty) {
+      for (var i in data['gallery']) {
+        imgList.add(i);
+      }
+    }
     log("=======Data : $data=======");
     isLoading = false;
     setState(() {});
@@ -53,7 +61,7 @@ class _DetailsState extends State<Details> {
                       autoPlay: true,
                       aspectRatio: 1,
                     ),
-                    items: sl.map((i) {
+                    items: imgList.map((i) {
                       return Builder(
                         builder: (BuildContext context) {
                           return Container(
@@ -62,7 +70,10 @@ class _DetailsState extends State<Details> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.fill,
-                                image: NetworkImage("${i}"),
+                                // image: NetworkImage("${i}"),
+                                image: NetworkImage(
+                                  "https://b4.coderangon.com/public/storage/products/gallery/xx0m21Vh28OIOxDeviEbW2jef6WCC5pmvOP7WFGN.jpg",
+                                ),
                               ),
                             ),
                           );
