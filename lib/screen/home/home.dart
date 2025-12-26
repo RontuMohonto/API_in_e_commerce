@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dada_garments_full_with_api/controller/Homepage_Controller/slider.dart';
 import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
 import 'package:dada_garments_full_with_api/screen/ProductScreen/Widgets/Product_Card_widget.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +35,18 @@ class _homeState extends State<home> {
       "category": "Head CAP",
     },
   ];
+  List Slider = [];
+
+  fetchData() async {
+    Slider = await SliderController().getSliderData();
+    log("___________${Slider}");
+  }
+
+  @override
+  void initState() {
+    fetchData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +72,7 @@ class _homeState extends State<home> {
               autoPlay: true,
               aspectRatio: 1,
             ),
-            items: imgList.map((i) {
+            items: Slider.map((i) {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
@@ -67,7 +82,9 @@ class _homeState extends State<home> {
                       image: DecorationImage(
                         fit: BoxFit.fill,
                         // image: NetworkImage("${i}"),
-                        image: NetworkImage("$i"),
+                        image: NetworkImage(
+                          "https://eplay.coderangon.com/storage/${i['image']}",
+                        ),
                       ),
                     ),
                   );
@@ -176,7 +193,6 @@ class _homeState extends State<home> {
                   children: [
                     CustomText(text: "New Product", color: Colors.black),
                     CustomText(text: "See All", color: Colors.black),
-
                   ],
                 ),
                 SizedBox(
