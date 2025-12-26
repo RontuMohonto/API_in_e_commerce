@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 class Details extends StatefulWidget {
   const Details({super.key, required this.Pid});
 
-
   final int Pid;
 
   @override
