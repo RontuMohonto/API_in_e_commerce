@@ -35,6 +35,8 @@ class _homeState extends State<home> {
       "category": "Head CAP",
     },
   ];
+
+  //empty list to add fetchdata
   List Slider = [];
 
   fetchData() async {
