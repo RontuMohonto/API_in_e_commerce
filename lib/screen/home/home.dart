@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
+import 'package:dada_garments_full_with_api/screen/ProductScreen/Widgets/Product_Card_widget.dart';
 import 'package:flutter/material.dart';
 
 class home extends StatefulWidget {
@@ -14,6 +15,22 @@ class _homeState extends State<home> {
     "https://img.freepik.com/free-vector/gradient-shopping-discount-horizontal-sale-banner_23-2150321996.jpg?semt=ais_hybrid&w=740&q=80",
     "https://img.freepik.com/free-psd/horizontal-banner-online-fashion-sale_23-2148585404.jpg?semt=ais_hybrid&w=740&q=80",
     "https://img.freepik.com/free-vector/gradient-shopping-discount-horizontal-sale-banner_23-2150321996.jpg?semt=ais_hybrid&w=740&q=80",
+  ];
+
+  List p = [
+    {
+      "id": 1,
+      "title": "Men's Classic Cotton Head Cap",
+      "stock": "75",
+      "sku": "CAP-COT-BLK",
+      "brand": "UrbanStyle",
+      "price": "650",
+      "old_price": "850",
+      "image": "products/PgrKShWTkVMoWefUTr0YxLWiyRRrAXbl3joQrLXe.webp",
+      "rating": "4.4",
+      "review_count": "89",
+      "category": "Head CAP",
+    },
   ];
 
   @override
@@ -65,6 +82,7 @@ class _homeState extends State<home> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(text: "Category", color: Colors.black),
+                SizedBox(height: 15),
                 SizedBox(
                   height: 120,
                   // width: MediaQuery.sizeOf(context).width,
@@ -102,6 +120,79 @@ class _homeState extends State<home> {
                     ),
                   ),
                 ),
+                //Hot selling
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(text: "Hot selling", color: Colors.black),
+                    CustomText(text: "See All", color: Colors.black),
+                  ],
+                ),
+                SizedBox(
+                  height: 310,
+
+                  width: MediaQuery.sizeOf(context).width,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (context, i) => SizedBox(
+                      width: 200,
+                      child: Product_Card_widget(AllData: p[0]),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15),
+
+                //Top selling
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(text: "Top selling", color: Colors.black),
+                    CustomText(text: "See All", color: Colors.black),
+                  ],
+                ),
+                SizedBox(
+                  height: 310,
+
+                  width: MediaQuery.sizeOf(context).width,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (context, i) => SizedBox(
+                      width: 200,
+                      child: Product_Card_widget(AllData: p[0]),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15),
+
+                //New Product
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                  children: [
+                    CustomText(text: "New Product", color: Colors.black),
+                    CustomText(text: "See All", color: Colors.black),
+
+                  ],
+                ),
+                SizedBox(
+                  height: 310,
+
+                  width: MediaQuery.sizeOf(context).width,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (context, i) => SizedBox(
+                      width: 200,
+                      child: Product_Card_widget(AllData: p[0]),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15),
               ],
             ),
           ),
