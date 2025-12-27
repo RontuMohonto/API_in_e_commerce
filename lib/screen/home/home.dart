@@ -53,10 +53,11 @@ class _homeState extends State<home> {
     Categorylist = await CategoryController().getCategoryData();
     setState(() {});
   }
+
   SellingItemsfetchData() async {
     SellingList = await SellingItemsController().getSellingsItemsData();
     setState(() {});
-    log("Selling items +++++++++++++++++ :______${SellingList}");
+    log("${SellingList['hot-selling']}");
   }
 
   @override
@@ -173,10 +174,10 @@ class _homeState extends State<home> {
                   width: MediaQuery.sizeOf(context).width,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 10,
+                    itemCount: SellingList['hot-selling'].length,
                     itemBuilder: (context, i) => SizedBox(
                       width: 200,
-                      child: Product_Card_widget(AllData: p[0]),
+                      child: Product_Card_widget(AllData: SellingList['hot-selling'][i]),
                     ),
                   ),
                 ),

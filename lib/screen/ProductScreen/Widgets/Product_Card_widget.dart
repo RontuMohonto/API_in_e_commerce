@@ -62,13 +62,13 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
                     spacing: 10,
                     children: [
                       CustomText(
-                        text: widget.AllData['price'],
+                        text: "${widget.AllData['price']}",
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: Colors.black,
                       ),
                       CustomText(
-                        text: widget.AllData['old_price'],
+                        text: "${widget.AllData['old_price']}",
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: Colors.grey,
