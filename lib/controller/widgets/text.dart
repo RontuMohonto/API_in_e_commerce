@@ -20,8 +20,6 @@ class CustomText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     //text dec
     return Text(
       text,
