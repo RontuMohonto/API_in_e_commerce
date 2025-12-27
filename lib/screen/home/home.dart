@@ -6,6 +6,8 @@ import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
 import 'package:dada_garments_full_with_api/screen/ProductScreen/Widgets/Product_Card_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../controller/category/categoryController.dart';
+
 class home extends StatefulWidget {
   const home({super.key});
 
@@ -14,11 +16,11 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-  List<String> imgList = [
-    "https://img.freepik.com/free-vector/gradient-shopping-discount-horizontal-sale-banner_23-2150321996.jpg?semt=ais_hybrid&w=740&q=80",
-    "https://img.freepik.com/free-psd/horizontal-banner-online-fashion-sale_23-2148585404.jpg?semt=ais_hybrid&w=740&q=80",
-    "https://img.freepik.com/free-vector/gradient-shopping-discount-horizontal-sale-banner_23-2150321996.jpg?semt=ais_hybrid&w=740&q=80",
-  ];
+  // List<String> imgList = [
+  //   "https://img.freepik.com/free-vector/gradient-shopping-discount-horizontal-sale-banner_23-2150321996.jpg?semt=ais_hybrid&w=740&q=80",
+  //   "https://img.freepik.com/free-psd/horizontal-banner-online-fashion-sale_23-2148585404.jpg?semt=ais_hybrid&w=740&q=80",
+  //   "https://img.freepik.com/free-vector/gradient-shopping-discount-horizontal-sale-banner_23-2150321996.jpg?semt=ais_hybrid&w=740&q=80",
+  // ];
 
   List p = [
     {
@@ -37,16 +39,25 @@ class _homeState extends State<home> {
   ];
 
   //empty list to add fetchdata
-  List Slider = [];
+  List Sliderlist = [];
+  List Categorylist = [];
 
-  fetchData() async {
-    Slider = await SliderController().getSliderData();
-    log("___________${Slider}");
+  sliderfetchData() async {
+    Sliderlist = await SliderController().getSliderData();
+    setState(() {});
+    log("___________${Sliderlist}");
+  }
+
+  categoryfetchData() async {
+    Categorylist = await CategoryController().getCategoryData();
+    setState(() {});
+    log("_____category :______${Categorylist}");
   }
 
   @override
   void initState() {
-    fetchData();
+    sliderfetchData();
+    categoryfetchData();
     super.initState();
   }
 
@@ -74,7 +85,7 @@ class _homeState extends State<home> {
               autoPlay: true,
               aspectRatio: 1,
             ),
-            items: Slider.map((i) {
+            items: Sliderlist.map((i) {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
@@ -94,7 +105,7 @@ class _homeState extends State<home> {
               );
             }).toList(),
           ),
-
+          //categories
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
@@ -107,7 +118,7 @@ class _homeState extends State<home> {
                   // width: MediaQuery.sizeOf(context).width,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 10,
+                    itemCount: Categorylist.length,
                     itemBuilder: (context, i) => Stack(
                       children: [
                         Container(
@@ -121,7 +132,7 @@ class _homeState extends State<home> {
                           child: Image(
                             fit: BoxFit.fill,
                             image: NetworkImage(
-                              "https://cdn.shortpixel.ai/spio/ret_img,q_orig,to_webp,s_webp/dubaiborka.com.bd/wp-content/uploads/2025/03/5345-3800-1.webp",
+                              "https://eplay.coderangon.com/storage/${Categorylist[i]['image']}",
                             ),
                           ),
                         ),
@@ -132,7 +143,9 @@ class _homeState extends State<home> {
                             width: 95,
 
                             color: Colors.redAccent.shade100,
-                            child: Center(child: Text("Women's")),
+                            child: Center(
+                              child: Text("${Categorylist[i]['name']}"),
+                            ),
                           ),
                         ),
                       ],
