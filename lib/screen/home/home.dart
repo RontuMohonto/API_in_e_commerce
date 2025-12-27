@@ -1,12 +1,13 @@
 import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dada_garments_full_with_api/controller/Homepage_Controller/slider.dart';
 import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
 import 'package:dada_garments_full_with_api/screen/ProductScreen/Widgets/Product_Card_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../controller/Selling_items/selling_items.dart';
 import '../../controller/category/categoryController.dart';
+import '../../controller/slider/slider.dart';
 
 class home extends StatefulWidget {
   const home({super.key});
@@ -41,23 +42,28 @@ class _homeState extends State<home> {
   //empty list to add fetchdata
   List Sliderlist = [];
   List Categorylist = [];
+  Map SellingList = {};
 
   sliderfetchData() async {
     Sliderlist = await SliderController().getSliderData();
     setState(() {});
-    log("___________${Sliderlist}");
   }
 
   categoryfetchData() async {
     Categorylist = await CategoryController().getCategoryData();
     setState(() {});
-    log("_____category :______${Categorylist}");
+  }
+  SellingItemsfetchData() async {
+    SellingList = await SellingItemsController().getSellingsItemsData();
+    setState(() {});
+    log("Selling items +++++++++++++++++ :______${SellingList}");
   }
 
   @override
   void initState() {
     sliderfetchData();
     categoryfetchData();
+    SellingItemsfetchData();
     super.initState();
   }
 
