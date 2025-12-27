@@ -28,14 +28,7 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.green.shade100,
-              Colors.green.shade50,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+         color: Colors.green.shade100,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(

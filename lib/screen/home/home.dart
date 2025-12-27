@@ -67,7 +67,15 @@ class _homeState extends State<home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffFF4444),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
         centerTitle: true,
         title: CustomText(
           text: "Home",
@@ -76,7 +84,6 @@ class _homeState extends State<home> {
           fontWeight: FontWeight.bold,
         ),
       ),
-
       backgroundColor: Colors.white,
       body: isLoading == true
           ? Center(child: CircularProgressIndicator())
@@ -85,23 +92,59 @@ class _homeState extends State<home> {
                 CarouselSlider(
                   options: CarouselOptions(
                     viewportFraction: .9,
-                    height: 150.0,
+                    height: 170,
                     autoPlay: true,
-                    aspectRatio: 1,
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    enlargeCenterPage: true,
+                    enlargeFactor: 0.25,
                   ),
                   items: Sliderlist.map((i) {
                     return Builder(
                       builder: (BuildContext context) {
                         return Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.symmetric(horizontal: 5.0),
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 10,
+                          ),
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              // image: NetworkImage("${i}"),
-                              image: NetworkImage(
-                                "https://eplay.coderangon.com/storage/${i['image']}",
+                            borderRadius: BorderRadius.circular(18),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.green.withOpacity(0.25),
+                                blurRadius: 12,
+                                spreadRadius: 2,
+                                offset: Offset(0, 6),
                               ),
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(18),
+                            child: Stack(
+                              children: [
+                                //image add korsi ekhane
+                                Image.network(
+                                  "https://eplay.coderangon.com/storage/${i['image']}",
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  fit: BoxFit.cover,
+                                ),
+
+                                //new black color
+                                Positioned.fill(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.black.withOpacity(0.0),
+                                          Colors.black.withOpacity(0.25),
+                                        ],
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         );
@@ -123,36 +166,70 @@ class _homeState extends State<home> {
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: Categorylist.length,
-                          itemBuilder: (context, i) => Stack(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(right: 10),
-                                height: 108,
-                                width: 95,
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Image(
-                                  fit: BoxFit.fill,
-                                  image: NetworkImage(
-                                    "https://eplay.coderangon.com/storage/${Categorylist[i]['image']}",
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 42,
-                                child: Container(
-                                  height: 18,
-                                  width: 95,
+                          itemBuilder: (context, i) => Container(
+                            margin: EdgeInsets.only(right: 12),
+                            child: Column(
+                              children: [
+                                Stack(
+                                  children: [
+                                    //picture disi
+                                    Container(
+                                      height: 105,
+                                      width: 95,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(14),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.green.withOpacity(
+                                              0.25,
+                                            ),
+                                            blurRadius: 10,
+                                            spreadRadius: 2,
+                                            offset: Offset(0, 5),
+                                          ),
+                                        ],
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(14),
+                                        child: Image.network(
+                                          "https://eplay.coderangon.com/storage/${Categorylist[i]['image']}",
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
 
-                                  color: Colors.redAccent.shade100,
-                                  child: Center(
-                                    child: Text("${Categorylist[i]['name']}"),
-                                  ),
+
+                                    //name disi category er
+
+                                    Positioned(
+                                      bottom: 6,
+                                      left: 0,
+                                      right: 0,
+                                      child: Center(
+                                        child: Text(
+                                          "${Categorylist[i]['name']}",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w600,
+                                            shadows: [
+                                              Shadow(
+                                                blurRadius: 6,
+                                                color: Colors.black.withOpacity(
+                                                  0.6,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
