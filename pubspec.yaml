@@ -26,3 +26,9 @@ flutter:
 
   assets:
     - assets/images/
+
+  fonts:
+    - family: myfont
+      fonts:
+#        - asset: assets/font/Borel-Regular.ttf
+        - asset: assets/font/Macondo-Regular.ttf
