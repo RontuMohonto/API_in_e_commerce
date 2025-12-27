@@ -16,10 +16,13 @@ class CustomText extends StatelessWidget {
   final FontWeight? fontWeight;
   final int? maxLines;
   final Color? color;
-  final  decorationText;
+  final decorationText;
 
   @override
   Widget build(BuildContext context) {
+
+
+    //text dec
     return Text(
       text,
       maxLines: maxLines,
