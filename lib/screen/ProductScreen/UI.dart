@@ -60,8 +60,8 @@ class _ProductScreenState extends State<ProductScreen> {
             padding: EdgeInsets.all(8.0),
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search_rounded),
-                hintText: "Search",
+                suffixIcon: Icon(Icons.search_rounded),
+                hintText: "Search hare...",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                   borderSide: BorderSide(color: Colors.green)
