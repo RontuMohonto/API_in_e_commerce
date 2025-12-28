@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dada_garments_full_with_api/screen/auth/UI.dart';
+import 'package:dada_garments_full_with_api/screen/home/UI.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -27,7 +28,7 @@ class _SplashState extends State<Splash> {
     }else {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ProductScreen()),
+        MaterialPageRoute(builder: (context) => home()),
       );
     }
   }

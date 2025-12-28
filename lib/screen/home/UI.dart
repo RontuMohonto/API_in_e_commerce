@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
+import 'package:dada_garments_full_with_api/screen/ProductScreen/UI.dart';
 import 'package:dada_garments_full_with_api/screen/ProductScreen/Widgets/Product_Card_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -162,61 +163,69 @@ class _homeState extends State<home> {
                             margin: EdgeInsets.only(right: 12),
                             child: Column(
                               children: [
-                                Stack(
-                                  children: [
-                                    //picture disi
-                                    Container(
-                                      height: 105,
-                                      width: 95,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(14),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.green.withOpacity(
-                                              0.25,
-                                            ),
-                                            blurRadius: 10,
-                                            spreadRadius: 2,
-                                            offset: Offset(0, 5),
+                                InkWell(
+                                  onTap: () {
+                                    log("===={Category container}=======");
+                                  },
+                                  child: Stack(
+                                    children: [
+                                      //picture disi
+                                      Container(
+                                        height: 105,
+                                        width: 95,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            14,
                                           ),
-                                        ],
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(14),
-                                        child: Image.network(
-                                          "https://eplay.coderangon.com/storage/${Categorylist[i]['image']}",
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-
-                                    //name disi category er
-                                    Positioned(
-                                      bottom: 6,
-                                      left: 0,
-                                      right: 0,
-                                      child: Center(
-                                        child: Text(
-                                          "${Categorylist[i]['name']}",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w600,
-                                            shadows: [
-                                              Shadow(
-                                                blurRadius: 6,
-                                                color: Colors.black.withOpacity(
-                                                  0.6,
-                                                ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.green.withOpacity(
+                                                0.25,
                                               ),
-                                            ],
+                                              blurRadius: 10,
+                                              spreadRadius: 2,
+                                              offset: Offset(0, 5),
+                                            ),
+                                          ],
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                            14,
                                           ),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
+                                          child: Image.network(
+                                            "https://eplay.coderangon.com/storage/${Categorylist[i]['image']}",
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+
+                                      //name disi category er
+                                      Positioned(
+                                        bottom: 6,
+                                        left: 0,
+                                        right: 0,
+                                        child: Center(
+                                          child: Text(
+                                            "${Categorylist[i]['name']}",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600,
+                                              shadows: [
+                                                Shadow(
+                                                  blurRadius: 6,
+                                                  color: Colors.black
+                                                      .withOpacity(0.6),
+                                                ),
+                                              ],
+                                            ),
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -229,7 +238,15 @@ class _homeState extends State<home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CustomText(text: "Hot selling", color: Colors.black),
-                          CustomText(text: "See All", color: Colors.black),
+                          InkWell(
+                            onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductScreen(title: "Hot-selling")));
+                            },
+                            child: CustomText(
+                              text: "See All",
+                              color: Colors.black,
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(

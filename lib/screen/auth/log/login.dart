@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
 import 'package:dada_garments_full_with_api/screen/ProductScreen/UI.dart';
+import 'package:dada_garments_full_with_api/screen/home/UI.dart';
 import 'package:flutter/material.dart';
 
 import '../../../controller/auth/loginController.dart';
@@ -77,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                     isLoading = false;
                     setState(() {});
                     if (status== true){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c)=> ProductScreen()));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c)=> home()));
                     }
                   },
 

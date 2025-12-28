@@ -7,7 +7,8 @@ import '../../controller/products/product_API.dart';
 import 'Widgets/Product_Card_widget.dart';
 
 class ProductScreen extends StatefulWidget {
-  const ProductScreen({super.key});
+  const ProductScreen({super.key, required this.title});
+  final String title;
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
