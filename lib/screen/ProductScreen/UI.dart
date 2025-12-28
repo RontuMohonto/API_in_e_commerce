@@ -22,19 +22,21 @@ class _ProductScreenState extends State<ProductScreen> {
   FatchData() async {
     isLoading = true;
     setState(() {});
-    ProducFinaltList = await GetProductController().getProduct(id: widget.title);
+    ProducFinaltList = await GetProductController().getProduct(
+      id: widget.title,
+    );
     ProductList = ProducFinaltList;
     isLoading = false;
     setState(() {});
   }
 
-
-
-  SearchData ({required String search}){
-    ProductList = ProducFinaltList.where((v)=> v['title'].toString().toLowerCase().contains(search)).toList();
-  log("==========PL  ${ProductList.length}======");
+  // Only for searchField
+  SearchData({required String search}) {
+    ProductList = ProducFinaltList.where(
+      (v) => v['title'].toString().toLowerCase().contains(search),
+    ).toList();
+    setState(() {});
   }
-
 
   @override
   void initState() {
@@ -67,10 +69,9 @@ class _ProductScreenState extends State<ProductScreen> {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(13.0),
             child: TextField(
-              onChanged: (v){
-                log("========${v}======");
+              onChanged: (v) {
                 SearchData(search: v.toString());
               },
               decoration: InputDecoration(
@@ -78,16 +79,16 @@ class _ProductScreenState extends State<ProductScreen> {
                 hintText: "Search hare...",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(color: Colors.green.shade900)
+                  borderSide: BorderSide(color: Colors.green.shade900),
                 ),
                 enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Colors.green.shade900)
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide(color: Colors.green.shade900),
                 ),
                 focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Colors.green.shade900)
-                )
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide(color: Colors.green.shade900),
+                ),
               ),
             ),
           ),
@@ -95,6 +96,22 @@ class _ProductScreenState extends State<ProductScreen> {
             child: isLoading == true
                 ? Center(
                     child: CircularProgressIndicator(color: Color(0xffFF4444)),
+                  )
+                : ProductList.isEmpty
+                ? Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomText(
+                          text: "Product not found..!",
+                          color: Colors.green.shade500,
+                        ),
+                        Icon(
+                          Icons.sentiment_dissatisfied_sharp,
+                          color: Colors.red,
+                        ),
+                      ],
+                    ),
                   )
                 : GridView.builder(
                     itemCount: ProductList.length,
