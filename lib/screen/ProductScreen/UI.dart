@@ -16,17 +16,24 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen> {
   List ProducFinaltList = [];
-  List ProductLIst = [];
+  List ProductList = [];
   bool isLoading = true;
 
   FatchData() async {
     isLoading = true;
     setState(() {});
     ProducFinaltList = await GetProductController().getProduct(id: widget.title);
-    ProductLIst = ProducFinaltList;
+    ProductList = ProducFinaltList;
     isLoading = false;
     setState(() {});
   }
+
+
+
+  SearchData (){
+    ProductList = ProducFinaltList.where((v)=> v['title'].toString().toLowerCase().contains("other")).toList();
+  }
+
 
   @override
   void initState() {
@@ -80,7 +87,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     child: CircularProgressIndicator(color: Color(0xffFF4444)),
                   )
                 : GridView.builder(
-                    itemCount: ProductLIst.length,
+                    itemCount: ProductList.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: .65,
@@ -90,7 +97,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         horizontal: 10,
                         vertical: 5,
                       ),
-                      child: Product_Card_widget(AllData: ProductLIst[index]),
+                      child: Product_Card_widget(AllData: ProductList[index]),
                     ),
                   ),
           ),
