@@ -1,11 +1,8 @@
-import 'dart:convert';
 import 'dart:developer';
+import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-
-import 'package:dada_garments_full_with_api/controller/auth/regController.dart';
-import 'package:flutter/material.dart';
-
+import '../../../controller/auth/regController.dart';
 import '../../../controller/widgets/SignUpName_Widget.dart';
 import '../../../controller/widgets/SignUpNumber_widget.dart';
 import '../../../controller/widgets/SignUpPassword_widget.dart';
@@ -29,113 +26,139 @@ class _RegPageState extends State<RegPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomText(
-            text: 'Lets Get Started',
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
+    return Container(
+      padding: EdgeInsets.all(12),
+      decoration: BoxDecoration(
+    color: Colors.green.shade50,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.green.withOpacity(.2),
+            blurRadius: 10,
+            offset: Offset(0, 4),
           ),
-          CustomText(
-            text: 'Create an account',
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-          ),
-          SizedBox(height: 15),
-
-          //name form field
-          CustomText(
-            text: "Name",
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-          NameFormField(
-            nameC: nameC,
-            validator: (v) {
-              if (v == null || v.isEmpty) {
-                return "please enter name";
-              } else {
-                return null;
-              }
-            },
-            title: 'name',
-          ),
-
-          CustomText(
-            text: "Number",
-            fontSize: 22,
-            color: Colors.black,
-            fontWeight: FontWeight.w600,
-          ),
-
-          //number formfield
-          NumberFormField(
-            numberC: numberC,
-            validator: (v) {
-              if (v == null || v.isEmpty) {
-                return "please enter phone";
-              } else if (!RegExp(r'^(01)[0-9]{9}$').hasMatch((v))) {
-                return "please enter a valid number";
-              } else {
-                return null;
-              }
-            },
-            title: 'number',
-          ),
-
-          //password validator
-          CustomText(
-            text: "Password",
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
-          ),
-          PasswordForm_widget(
-            passC: passC,
-            validator: (v) {
-              if (v == null || v.isEmpty) {
-                return "please enter password";
-              } else if (!RegExp(
-                r'^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,}$',
-              ).hasMatch((v))) {
-                return "Password must contain A-Z, a-z, 0-9, special character & minimum 8 characters";
-              } else {
-                return null;
-              }
-            },
-            title: 'password',
-          ),
-          SizedBox(height: 20),
-
-          isLoading == true
-              ? Center(
-                  child: CircularProgressIndicator(color: Color(0xffFE4546)),
-                )
-              : CustomButton_widget(
-                  title: 'Register',
-                  onTap: () async {
-                    // if (!_formKey.currentState!.validate()) {
-                    //   return;
-                    // }
-                    var a = {
-                      "name": nameC.text,
-                      "phone": numberC.text,
-                      "password": passC.text,
-                    };
-                    isLoading = true;
-                    setState(() {});
-                    bool status = await RegController().CreateAccoutFunction(
-                      data: a,
-                    );
-                    isLoading = false;
-                    setState(() {});
-                  },
-                ),
         ],
+      ),
+
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 12,
+          children: [
+
+            // TITLE
+            CustomText(
+              text: 'Let’s Get Started',
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.green.shade800,
+            ),
+            CustomText(
+              text: 'Create an account to continue',
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: Colors.black54,
+            ),
+            SizedBox(height: 20),
+
+            // NAME
+            CustomText(
+              text: "Name",
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            NameFormField(
+              nameC: nameC,
+              validator: (v) {
+                if (v == null || v.isEmpty) {
+                  return "please enter name";
+                }
+                return null;
+              },
+              title: "name",
+            ),
+
+            SizedBox(height: 10),
+
+            // NUMBER
+            CustomText(
+              text: "Phone Number",
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            NumberFormField(
+              numberC: numberC,
+              validator: (v) {
+                if (v == null || v.isEmpty) {
+                  return "please enter phone";
+                } else if (!RegExp(r'^(01)[0-9]{9}$').hasMatch(v)) {
+                  return "please enter valid phone";
+                }
+                return null;
+              },
+              title: "number",
+            ),
+
+            SizedBox(height: 10),
+
+            // PASSWORD
+            CustomText(
+              text: "Password",
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            PasswordForm_widget(
+              passC: passC,
+              validator: (v) {
+                if (v == null || v.isEmpty) {
+                  return "please enter password";
+                } else if (!RegExp(
+                    r'^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,}$')
+                    .hasMatch(v)) {
+                  return "Password must be strong";
+                }
+                return null;
+              },
+              title: "password",
+            ),
+
+            SizedBox(height: 20),
+
+
+            // BUTTON
+            isLoading
+                ? Center(
+              child: CircularProgressIndicator(
+                color: Colors.green,
+              ),
+            )
+                : CustomButton_widget(
+              title: "Register",
+              onTap: () async {
+                if (!_formKey.currentState!.validate()) return;
+
+                var data = {
+                  "name": nameC.text,
+                  "phone": numberC.text,
+                  "password": passC.text,
+                };
+
+                isLoading = true;
+                setState(() {});
+
+                bool status = await RegController()
+                    .CreateAccoutFunction(data: data);
+
+                isLoading = false;
+                setState(() {});
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,4 +1,4 @@
-import 'package:dada_garments_full_with_api/screen/auth/log/login.dart';
+import 'package:dada_garments_full_with_api/screen/auth/log/UI.dart';
 import 'package:dada_garments_full_with_api/screen/auth/reg/RegSc.dart';
 import 'package:flutter/material.dart';
 

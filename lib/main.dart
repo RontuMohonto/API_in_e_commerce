@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,
-      home: home(),
+      home: AuthScreen(),
     );
   }
 }
