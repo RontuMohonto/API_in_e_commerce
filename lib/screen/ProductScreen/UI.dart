@@ -15,13 +15,15 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
+  List ProducFinaltList = [];
   List ProductLIst = [];
   bool isLoading = true;
 
   FatchData() async {
     isLoading = true;
     setState(() {});
-    ProductLIst = await GetProductController().getProduct(id: widget.title);
+    ProducFinaltList = await GetProductController().getProduct(id: widget.title);
+    ProductLIst = ProducFinaltList;
     isLoading = false;
     setState(() {});
   }
@@ -59,6 +61,9 @@ class _ProductScreenState extends State<ProductScreen> {
           Padding(
             padding: EdgeInsets.all(8.0),
             child: TextField(
+              onChanged: (v){
+                log("========${v}======");
+              },
               decoration: InputDecoration(
                 suffixIcon: Icon(Icons.search_rounded),
                 hintText: "Search hare...",
