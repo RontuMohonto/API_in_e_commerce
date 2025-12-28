@@ -241,7 +241,7 @@ class _homeState extends State<home> {
                           CustomText(text: "Hot selling", color: Colors.black),
                           InkWell(
                             onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductScreen(title: "Hot-selling")));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductScreen(title: "hot-selling")));
                             },
                             child: CustomText(
                               text: "See All",
@@ -273,7 +273,13 @@ class _homeState extends State<home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CustomText(text: "Top selling", color: Colors.black),
-                          CustomText(text: "See All", color: Colors.black),
+                          InkWell(
+                              onTap: (){
+                                log("=====Top selling====");
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductScreen(title: "top-selling")));
+
+                              },
+                              child: CustomText(text: "See All", color: Colors.black)),
                         ],
                       ),
                       SizedBox(
@@ -300,7 +306,14 @@ class _homeState extends State<home> {
 
                         children: [
                           CustomText(text: "New Product", color: Colors.black),
-                          CustomText(text: "See All", color: Colors.black),
+                          InkWell (
+                              onTap: (){
+                                log("====Latest products==========");
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductScreen(title: "latest")));
+
+
+                              },
+                              child: CustomText(text: "See All", color: Colors.black)),
                         ],
                       ),
                       SizedBox(

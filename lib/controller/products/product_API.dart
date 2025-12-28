@@ -9,11 +9,11 @@ class GetProductController {
     try {
       Uri url;
       if (id == 'hot-selling') {
-        url = Uri.parse("https://b4.coderangon.com/api/products");
+        url = Uri.parse("https://eplay.coderangon.com/api/products");
       } else if (id == 'latest') {
-        url = Uri.parse("https://b4.coderangon.com/api/latests");
+        url = Uri.parse("https://eplay.coderangon.com/api/latests");
       } else {
-        url = Uri.parse("https://b4.coderangon.com/api/products/category/$id");
+        url = Uri.parse("https://eplay.coderangon.com/api/products/category/$id");
       }
       var response = await http.get(url);
 

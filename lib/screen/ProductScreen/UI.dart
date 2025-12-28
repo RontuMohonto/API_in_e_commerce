@@ -28,8 +28,8 @@ class _ProductScreenState extends State<ProductScreen> {
 
   @override
   void initState() {
-    FatchData();
     super.initState();
+    FatchData();
   }
 
   @override
