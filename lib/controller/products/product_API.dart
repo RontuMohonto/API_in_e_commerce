@@ -11,7 +11,7 @@ class GetProductController {
       if (id == 'hot-selling') {
         url = Uri.parse("https://eplay.coderangon.com/api/products");
       } else if (id == 'latest') {
-        url = Uri.parse("https://eplay.coderangon.com/git api/products/latests");
+        url = Uri.parse("https://eplay.coderangon.com/api/products/latests");
       } else {
         url = Uri.parse("https://eplay.coderangon.com/api/products/category/$id");
       }
