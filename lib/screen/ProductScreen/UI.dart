@@ -39,9 +39,7 @@ class _ProductScreenState extends State<ProductScreen> {
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Color(0xFFFF4F4F),
-                Color(0xFFFF9A37)],
+              colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -56,19 +54,43 @@ class _ProductScreenState extends State<ProductScreen> {
         ),
       ),
       backgroundColor: Colors.white,
-      body: isLoading == true
-          ? Center(child: CircularProgressIndicator(color: Color(0xffFF4444)))
-          : GridView.builder(
-              itemCount: ProductLIst.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: .65,
-              ),
-              itemBuilder: (context, index) => Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: Product_Card_widget(AllData: ProductLIst[index]),
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search_rounded),
+                hintText: "Search",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide(color: Colors.green)
+                )
               ),
             ),
+          ),
+          Expanded(
+            child: isLoading == true
+                ? Center(
+                    child: CircularProgressIndicator(color: Color(0xffFF4444)),
+                  )
+                : GridView.builder(
+                    itemCount: ProductLIst.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: .65,
+                    ),
+                    itemBuilder: (context, index) => Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 5,
+                      ),
+                      child: Product_Card_widget(AllData: ProductLIst[index]),
+                    ),
+                  ),
+          ),
+        ],
+      ),
     );
   }
 }
