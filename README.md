@@ -12,4 +12,27 @@
 
 
 
- color: Color(0xffFF4444)
+ color: Color(0xffFF4444) 
+
+
+
+appBar: AppBar(
+flexibleSpace: Container(
+decoration: BoxDecoration(
+gradient: LinearGradient(
+colors: [
+Color(0xFFFF4F4F),
+Color(0xFFFF9A37)],
+begin: Alignment.topLeft,
+end: Alignment.bottomRight,
+),
+),
+),
+centerTitle: true,
+title: CustomText(
+text: "Product's",
+color: Colors.white,
+fontSize: 20,
+fontWeight: FontWeight.bold,
+),
+),
