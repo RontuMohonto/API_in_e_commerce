@@ -32,34 +32,26 @@ class _homeState extends State<home> {
 
   sliderfetchData() async {
     isLoading = true;
-    setState(() {});
     Sliderlist = await SliderController().getSliderData();
-    isLoading = false;
-    setState(() {});
+    categoryfetchData();
   }
 
   categoryfetchData() async {
-    isLoading = true;
-    setState(() {});
     Categorylist = await CategoryController().getCategoryData();
-    isLoading = false;
-    setState(() {});
+    SellingItemsfetchData();
   }
 
   SellingItemsfetchData() async {
-    isLoading = true;
-    setState(() {});
     SellingList = await SellingItemsController().getSellingsItemsData();
     isLoading = false;
     setState(() {});
-    log("${SellingList['hot-selling']}");
   }
 
   @override
   void initState() {
+    isLoading = true;
     sliderfetchData();
-    categoryfetchData();
-    SellingItemsfetchData();
+
     super.initState();
   }
 
@@ -198,9 +190,7 @@ class _homeState extends State<home> {
                                       ),
                                     ),
 
-
                                     //name disi category er
-
                                     Positioned(
                                       bottom: 6,
                                       left: 0,
