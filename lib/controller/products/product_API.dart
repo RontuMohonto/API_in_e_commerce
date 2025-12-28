@@ -10,6 +10,8 @@ class GetProductController {
       Uri url;
       if (id == 'hot-selling') {
         url = Uri.parse("https://b4.coderangon.com/api/products");
+      } else if (id == 'latest') {
+        url = Uri.parse("https://b4.coderangon.com/api/latests");
       } else {
         url = Uri.parse("https://b4.coderangon.com/api/products/category/$id");
       }
