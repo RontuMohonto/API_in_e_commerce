@@ -17,6 +17,8 @@ class PasswordForm_widget extends StatelessWidget {
       controller: passC,
       validator: validator,
       decoration: InputDecoration(
+        fillColor: Colors.white,
+        filled: true,
         hintText: "please enter your $title",
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       ),

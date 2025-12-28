@@ -29,7 +29,7 @@ class _RegPageState extends State<RegPage> {
     return Container(
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
-    color: Colors.green.shade50,
+        color: Colors.green.shade50,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -46,7 +46,6 @@ class _RegPageState extends State<RegPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 7,
           children: [
-
             // TITLE
             CustomText(
               text: 'Let’s Get Started',
@@ -54,7 +53,7 @@ class _RegPageState extends State<RegPage> {
               fontWeight: FontWeight.bold,
               color: Colors.green.shade800,
             ),
-            SizedBox(height: 5,),
+            SizedBox(height: 5),
             CustomText(
               text: 'Create an account to continue',
               fontSize: 14,
@@ -118,8 +117,8 @@ class _RegPageState extends State<RegPage> {
                 if (v == null || v.isEmpty) {
                   return "please enter password";
                 } else if (!RegExp(
-                    r'^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,}$')
-                    .hasMatch(v)) {
+                  r'^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,}$',
+                ).hasMatch(v)) {
                   return "Password must be strong";
                 }
                 return null;
@@ -129,35 +128,31 @@ class _RegPageState extends State<RegPage> {
 
             SizedBox(height: 20),
 
-
             // BUTTON
             isLoading
-                ? Center(
-              child: CircularProgressIndicator(
-                color: Colors.green,
-              ),
-            )
+                ? Center(child: CircularProgressIndicator(color: Colors.green))
                 : CustomButton_widget(
-              title: "Register",
-              onTap: () async {
-                if (!_formKey.currentState!.validate()) return;
+                    title: "Register",
+                    onTap: () async {
+                      if (!_formKey.currentState!.validate()) return;
 
-                var data = {
-                  "name": nameC.text,
-                  "phone": numberC.text,
-                  "password": passC.text,
-                };
+                      var data = {
+                        "name": nameC.text,
+                        "phone": numberC.text,
+                        "password": passC.text,
+                      };
 
-                isLoading = true;
-                setState(() {});
+                      isLoading = true;
+                      setState(() {});
 
-                bool status = await RegController()
-                    .CreateAccoutFunction(data: data);
+                      bool status = await RegController().CreateAccoutFunction(
+                        data: data,
+                      );
 
-                isLoading = false;
-                setState(() {});
-              },
-            ),
+                      isLoading = false;
+                      setState(() {});
+                    },
+                  ),
           ],
         ),
       ),

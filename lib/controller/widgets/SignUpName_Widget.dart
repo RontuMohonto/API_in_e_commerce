@@ -18,8 +18,12 @@ class NameFormField extends StatelessWidget {
       controller: nameC,
       validator: validator,
       decoration: InputDecoration(
+        fillColor: Colors.white,
+        filled: true,
         hintText: "please enter your $title",
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        border: OutlineInputBorder(
+
+            borderRadius: BorderRadius.circular(10)),
       ),
     );
   }
