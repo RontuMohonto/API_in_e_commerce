@@ -5,10 +5,10 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
 
 class GetProductController {
-  Future<List> getProduct() async {
+  Future<List> getProduct({required String id}) async {
     try {
-     Uri url = Uri.parse("https://b4.coderangon.com/api/products");
-     //  Uri url = Uri.parse("https://b4.coderangon.com/api/products/category/4");
+   //  Uri url = Uri.parse("https://b4.coderangon.com/api/products");
+       Uri url = Uri.parse("https://b4.coderangon.com/api/products/category/$id");
       var response = await http.get(url);
 
       if (response.statusCode == 200) {

@@ -166,7 +166,7 @@ class _homeState extends State<home> {
                                 InkWell(
                                   onTap: () {
                                     log("====${Categorylist[i]['id']}=======");
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductScreen(title: "category")));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductScreen(title: "${Categorylist[i]['id']}")));
                                   },
                                   child: Stack(
                                     children: [

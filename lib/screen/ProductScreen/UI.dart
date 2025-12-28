@@ -21,7 +21,7 @@ class _ProductScreenState extends State<ProductScreen> {
   FatchData() async {
     isLoading = true;
     setState(() {});
-    ProductLIst = await GetProductController().getProduct();
+    ProductLIst = await GetProductController().getProduct(id: widget.title);
     isLoading = false;
     setState(() {});
   }
@@ -36,9 +36,22 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
         centerTitle: true,
-        // backgroundColor: Colors.green.shade100,
-        title: Text("Product's", style: TextStyle(color: Colors.black)),
+        title: CustomText(
+          text: "Product's",
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       backgroundColor: Colors.white,
       body: isLoading == true
