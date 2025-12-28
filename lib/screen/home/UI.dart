@@ -165,7 +165,7 @@ class _homeState extends State<home> {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    log("===={Category container}=======");
+                                    log("====${Categorylist[i]['id']}=======");
                                   },
                                   child: Stack(
                                     children: [
