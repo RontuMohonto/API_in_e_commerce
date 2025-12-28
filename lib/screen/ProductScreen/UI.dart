@@ -32,6 +32,7 @@ class _ProductScreenState extends State<ProductScreen> {
 
   SearchData ({required String search}){
     ProductList = ProducFinaltList.where((v)=> v['title'].toString().toLowerCase().contains(search)).toList();
+  log("==========PL  ${ProductList.length}======");
   }
 
 
@@ -77,7 +78,15 @@ class _ProductScreenState extends State<ProductScreen> {
                 hintText: "Search hare...",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(color: Colors.green)
+                  borderSide: BorderSide(color: Colors.green.shade900)
+                ),
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: Colors.green.shade900)
+                ),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: Colors.green.shade900)
                 )
               ),
             ),
