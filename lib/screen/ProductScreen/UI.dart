@@ -30,8 +30,8 @@ class _ProductScreenState extends State<ProductScreen> {
 
 
 
-  SearchData (){
-    ProductList = ProducFinaltList.where((v)=> v['title'].toString().toLowerCase().contains("other")).toList();
+  SearchData ({required String search}){
+    ProductList = ProducFinaltList.where((v)=> v['title'].toString().toLowerCase().contains(search)).toList();
   }
 
 
@@ -70,6 +70,7 @@ class _ProductScreenState extends State<ProductScreen> {
             child: TextField(
               onChanged: (v){
                 log("========${v}======");
+                SearchData(search: v.toString());
               },
               decoration: InputDecoration(
                 suffixIcon: Icon(Icons.search_rounded),
