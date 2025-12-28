@@ -44,7 +44,7 @@ class _RegPageState extends State<RegPage> {
         key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 12,
+          spacing: 7,
           children: [
 
             // TITLE
@@ -54,11 +54,12 @@ class _RegPageState extends State<RegPage> {
               fontWeight: FontWeight.bold,
               color: Colors.green.shade800,
             ),
+            SizedBox(height: 5,),
             CustomText(
               text: 'Create an account to continue',
               fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: Colors.black54,
+              fontWeight: FontWeight.bold,
+              color: Colors.green.shade500,
             ),
             SizedBox(height: 20),
 
