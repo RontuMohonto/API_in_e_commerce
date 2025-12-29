@@ -46,7 +46,7 @@ class _OrderScreenState extends State<OrderScreen> {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.08),
+                  color: Colors.black.withOpacity(0.5),
                   blurRadius: 6,
                   offset: Offset(0, 3),
                 ),
@@ -62,16 +62,7 @@ class _OrderScreenState extends State<OrderScreen> {
                     children: [
                       CustomText(text: "Order ID", color: Colors.white),
 
-                      Row(
-                        spacing: 4,
-                        children: [
-                          Icon(Icons.monetization_on),
-                          CustomText(
-                            text: "Cash on Delivary",
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
+                      CustomText(text: "COD", color: Colors.white),
                     ],
                   ),
                   Row(
@@ -87,7 +78,24 @@ class _OrderScreenState extends State<OrderScreen> {
                       ),
                     ],
                   ),
-                  CustomText(text: "Order ID", color: Colors.white),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomText(text: "Dhaka,Bangladesh", color: Colors.white),
+                      Row(
+                        spacing: 4,
+                        children: [
+                          CustomText(
+                            text: "৳",
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          CustomText(text: "1500", color: Colors.white),
+                        ],
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
