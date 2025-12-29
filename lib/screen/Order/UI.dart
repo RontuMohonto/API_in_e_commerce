@@ -13,6 +13,7 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
+  TextEditingController searchController = TextEditingController();
   List OrderData = [];
 
   fetchData() async {
@@ -30,6 +31,8 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      //appbar
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -54,6 +57,7 @@ class _OrderScreenState extends State<OrderScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
+              controller: searchController,
               decoration: InputDecoration(
                 suffixIcon: Icon(Icons.search),
                 hintText: "Search hare...",
