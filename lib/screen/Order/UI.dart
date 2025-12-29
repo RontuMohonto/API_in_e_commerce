@@ -51,16 +51,23 @@ class _OrderScreenState extends State<OrderScreen> {
                 ),
               ],
             ),
-            child: Row(
-              children: [
-                Column(
-                  children: [
-                    CustomText(text: "Order ID", color: Colors.white),
-                    CustomText(text: "Order ID", color: Colors.white),
-                    CustomText(text: "Order ID", color: Colors.white),
-                  ],
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomText(text: "Order ID", color: Colors.white),
+
+                      CustomText(text: "Cash on Delivary", color: Colors.white),
+                    ],
+                  ),
+                  CustomText(text: "Order ID", color: Colors.white),
+                  CustomText(text: "Order ID", color: Colors.white),
+                ],
+              ),
             ),
           ),
         ),
