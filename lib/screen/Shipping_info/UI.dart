@@ -90,6 +90,8 @@ class _LoginState extends State<ShippingScreen> {
                     color: Colors.green.shade300,
                   ),
                   SizedBox(height: 5),
+
+                  //name
                   NameFormField(
                     nameC: nameC,
                     validator: (v) {
@@ -100,7 +102,7 @@ class _LoginState extends State<ShippingScreen> {
                     },
                     title: 'Name',
                   ),
-
+                  //phone
                   NameFormField(
                     nameC: phoneC,
                     validator: (v) {
@@ -111,6 +113,7 @@ class _LoginState extends State<ShippingScreen> {
                     },
                     title: 'Phone',
                   ),
+
                   NameFormField(
                     nameC: streetC,
                     validator: (v) {
@@ -141,9 +144,7 @@ class _LoginState extends State<ShippingScreen> {
                     },
                     title: 'District',
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
+                  SizedBox(height: 30),
 
                   isLoading == true
                       ? Center(child: CircularProgressIndicator())
@@ -161,7 +162,8 @@ class _LoginState extends State<ShippingScreen> {
                               "district": districtC.text,
                             };
                             log("===========${data}==");
-                            FlutterSecureStorage storage = FlutterSecureStorage();
+                            FlutterSecureStorage storage =
+                                FlutterSecureStorage();
                             await storage.write(
                               key: "shipping",
                               value: jsonEncode(data),
