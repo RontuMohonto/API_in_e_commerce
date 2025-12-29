@@ -91,27 +91,48 @@ class _LoginState extends State<ShippingScreen> {
                   ),
                   SizedBox(height: 5),
 
-                  //name
-                  NameFormField(
-                    nameC: nameC,
-                    validator: (v) {
-                      if (v == null || v == "") {
-                        return "Please enter Name";
-                      }
-                      return null;
-                    },
-                    title: 'Name',
-                  ),
-                  //phone
-                  NameFormField(
-                    nameC: phoneC,
-                    validator: (v) {
-                      if (v == null || v == "") {
-                        return "Please enter Phone";
-                      }
-                      return null;
-                    },
-                    title: 'Phone',
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
+                        begin: AlignmentGeometry.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        spacing: 5,
+                        children: [
+                          CustomText(
+                            text: "Enter your Name and Contact number",
+                            color: Colors.white,
+                          ),
+                          NameFormField(
+                            nameC: nameC,
+                            validator: (v) {
+                              if (v == null || v == "") {
+                                return "Please enter Name";
+                              }
+                              return null;
+                            },
+                            title: 'Name',
+                          ),
+                          //phone
+                          NameFormField(
+                            nameC: phoneC,
+                            validator: (v) {
+                              if (v == null || v == "") {
+                                return "Please enter Phone";
+                              }
+                              return null;
+                            },
+                            title: 'Phone',
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
 
                   NameFormField(
