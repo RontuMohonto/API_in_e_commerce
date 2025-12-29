@@ -16,14 +16,12 @@ class ShippingScreen extends StatefulWidget {
 }
 
 class _ShippingScreenState extends State<ShippingScreen> {
-
   final _formkey = GlobalKey<FormState>();
   TextEditingController nameC = TextEditingController();
   TextEditingController phoneC = TextEditingController();
   TextEditingController streetC = TextEditingController();
   TextEditingController upazillaC = TextEditingController();
   TextEditingController districtC = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +46,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
       ),
 
       body: Form(
-        key: _formKey,
+        key: _formkey,
         child: SingleChildScrollView(
           child: Column(
             spacing: 10,
@@ -116,22 +114,25 @@ class _ShippingScreenState extends State<ShippingScreen> {
                 },
                 title: "District",
               ),
-              CustomButton_widget(title: "Next", onTap: ()async{
-                if(!_formkey.currentState!.validate()){
-                  return;
-                }
-                var data = {
-                  "name" : nameC.text,
-                  "phone" : phoneC.text,
-                  "street" : streetC.text,
-                  "upazilla" : upazillaC.text,
-                  "district" : districtC.text,
-                };
-                log("====${data}====");
-                FlutterSecureStorage storage = FlutterSecureStorage();
-                await storage.write(key: "shipping", value: jsonEncode(data));
-                Navigator.pop(context);
-              })
+              CustomButton_widget(
+                title: "Next",
+                onTap: () async {
+                  if (!_formkey.currentState!.validate()) {
+                    return;
+                  }
+                  var data = {
+                    "name": nameC.text,
+                    "phone": phoneC.text,
+                    "street": streetC.text,
+                    "upazilla": upazillaC.text,
+                    "district": districtC.text,
+                  };
+                  log("====${data}====");
+                  FlutterSecureStorage storage = FlutterSecureStorage();
+                  await storage.write(key: "shipping", value: jsonEncode(data));
+                  Navigator.pop(context);
+                },
+              ),
             ],
           ),
         ),
