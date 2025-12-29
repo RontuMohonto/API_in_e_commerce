@@ -8,7 +8,7 @@ class CustomText extends StatelessWidget {
     this.fontWeight,
     this.maxLines,
     this.color,
-    this.decorationText,
+    this.decorationText, this.overflow,
   });
 
   final String text;
@@ -17,6 +17,7 @@ class CustomText extends StatelessWidget {
   final int? maxLines;
   final Color? color;
   final decorationText;
+  final TextOverflow ? overflow;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class CustomText extends StatelessWidget {
 
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
+        overflow: overflow ?? TextOverflow.ellipsis,
         fontFamily: "myfont",
         fontSize: fontSize ?? 22,
         color: color ?? Colors.grey,
