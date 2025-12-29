@@ -1,4 +1,5 @@
 import 'package:dada_garments_full_with_api/screen/Details_products/UI.dart';
+import 'package:dada_garments_full_with_api/screen/Order/UI.dart';
 import 'package:dada_garments_full_with_api/screen/ProductScreen/UI.dart';
 import 'package:dada_garments_full_with_api/screen/Shipping_info/UI.dart';
 import 'package:dada_garments_full_with_api/screen/auth/UI.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,
-      home: home(),
+      home: OrderScreen(),
     );
   }
 }
