@@ -33,13 +33,14 @@ class _OrderScreenState extends State<OrderScreen> {
       ),
 
       body: ListView.builder(
+        itemCount: 5,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               gradient: LinearGradient(
-                colors: [Colors.green.shade500, Colors.green.shade300],
+                colors: [Colors.green.shade600, Colors.green.shade500],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
