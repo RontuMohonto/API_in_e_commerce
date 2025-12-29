@@ -134,38 +134,60 @@ class _LoginState extends State<ShippingScreen> {
                       ),
                     ),
                   ),
-
-                  NameFormField(
-                    nameC: streetC,
-                    validator: (v) {
-                      if (v == null || v == "") {
-                        return "Please enter Street";
-                      }
-                      return null;
-                    },
-                    title: 'Street',
-                  ),
-                  NameFormField(
-                    nameC: upazilaC,
-                    validator: (v) {
-                      if (v == null || v == "") {
-                        return "Please enter Upazela";
-                      }
-                      return null;
-                    },
-                    title: 'Upazela',
-                  ),
-                  NameFormField(
-                    nameC: districtC,
-                    validator: (v) {
-                      if (v == null || v == "") {
-                        return "Please enter District";
-                      }
-                      return null;
-                    },
-                    title: 'District',
-                  ),
-                  SizedBox(height: 30),
+               Container(
+                 decoration: BoxDecoration(
+                   gradient: LinearGradient(
+                     colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
+                     begin: AlignmentGeometry.topLeft,
+                     end: Alignment.bottomRight,
+                   ),
+                   borderRadius: BorderRadius.circular(18),
+                 ),
+                 child: Padding(
+                   padding: const EdgeInsets.all(18.0),
+                   child: Column(
+                     spacing: 5,
+                     children: [
+                       CustomText(text: "Enter shipping informations",color: Colors.white,),
+                       //street
+                       NameFormField(
+                         nameC: streetC,
+                         validator: (v) {
+                           if (v == null || v == "") {
+                             return "Please enter Street";
+                           }
+                           return null;
+                         },
+                         title: 'Street',
+                       ),
+                       //upazilla
+                       NameFormField(
+                         nameC: upazilaC,
+                         validator: (v) {
+                           if (v == null || v == "") {
+                             return "Please enter Upazela";
+                           }
+                           return null;
+                         },
+                         title: 'Upazela',
+                       ),
+                       //district
+                       NameFormField(
+                         nameC: districtC,
+                         validator: (v) {
+                           if (v == null || v == "") {
+                             return "Please enter District";
+                           }
+                           return null;
+                         },
+                         title: 'District',
+                       ),
+                     ],
+                   ),
+                 ),
+                 
+                 
+               ),
 
                   isLoading == true
                       ? Center(child: CircularProgressIndicator())

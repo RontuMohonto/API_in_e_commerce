@@ -106,6 +106,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
+                        gradient: LinearGradient(
+                          colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37),
+
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight
+                        ),
 
                         boxShadow: [
                           BoxShadow(
@@ -123,13 +130,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             Icon(
                               Icons.add_circle_outline,
                               size: 40,
-                              color: Colors.green.shade900,
+                              color: Colors.white,
                             ),
                             CustomText(
                               text: "Add Shipping Information",
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: Colors.green.shade500,
+                              color: Colors.white,
                             ),
                           ],
                         ),
@@ -331,8 +338,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
                 log("Checkout: ${jsonEncode(checkout)}");
                 await CheckOutService().sentData(data: checkout);
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> home()));
-
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => home()),
+                );
               },
             ),
           ],
