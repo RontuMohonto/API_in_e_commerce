@@ -12,10 +12,10 @@ class CheckOutService {
       var header = {"Accept": "application/json", "Content-Type": "application/json"};
       var res = await http.post(uri, body: body, headers: header);
       log("=======${res.statusCode}========");
-      // if (res.statusCode == 200) {
-      //   EasyLoading.showSuccess("Order Submitted");
-      //   return true;
-      // }
+       if (res.statusCode == 200) {
+       EasyLoading.showSuccess("Order Submitted");
+        return true;
+      }
     } catch (e) {
       log("Error : $e");
     }

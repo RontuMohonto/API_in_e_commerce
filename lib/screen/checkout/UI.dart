@@ -331,6 +331,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
                 log("Checkout: ${jsonEncode(checkout)}");
                 await CheckOutService().sentData(data: checkout);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> home()));
 
               },
             ),
