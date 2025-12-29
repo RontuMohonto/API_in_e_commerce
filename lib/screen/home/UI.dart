@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
+import 'package:dada_garments_full_with_api/screen/Cart/UI.dart';
 import 'package:dada_garments_full_with_api/screen/ProductScreen/UI.dart';
 import 'package:dada_garments_full_with_api/screen/ProductScreen/Widgets/Product_Card_widget.dart';
 import 'package:flutter/material.dart';
@@ -383,6 +384,28 @@ class _homeState extends State<home> {
                 ),
               ],
             ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+
+          Navigator.push(context, MaterialPageRoute(builder: (_)=> Cart()));
+        },
+        elevation: 6,
+        backgroundColor: Colors.transparent,
+        child: Container(
+          width: 56,
+          height: 56,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
+            ),
+          ),
+          child: const Icon(Icons.shopping_cart_outlined, color: Colors.white, size: 28),
+        ),
+      ),
     );
   }
 }
