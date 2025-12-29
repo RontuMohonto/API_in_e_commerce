@@ -3,7 +3,6 @@ import 'package:dada_garments_full_with_api/screen/ProductScreen/UI.dart';
 import 'package:dada_garments_full_with_api/screen/Shipping_info/UI.dart';
 import 'package:dada_garments_full_with_api/screen/auth/UI.dart';
 import 'package:dada_garments_full_with_api/screen/auth/reg/RegSc.dart';
-import 'package:dada_garments_full_with_api/screen/checkout/UI.dart';
 import 'package:dada_garments_full_with_api/screen/home/UI.dart';
 import 'package:dada_garments_full_with_api/screen/splash/splash.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,
-      home: CheckoutScreen(productData: {},),
+      home: home(),
     );
   }
 }

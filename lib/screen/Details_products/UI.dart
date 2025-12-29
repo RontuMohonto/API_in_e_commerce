@@ -4,6 +4,9 @@ import 'package:dada_garments_full_with_api/controller/details_controller/Detail
 import 'package:dada_garments_full_with_api/controller/widgets/text.dart';
 import 'package:flutter/material.dart';
 
+import '../../controller/widgets/custom_button.dart';
+import '../checkout/UI.dart';
+
 class Details extends StatefulWidget {
   const Details({super.key, required this.Pid});
   final int Pid;
@@ -135,16 +138,6 @@ class _DetailsState extends State<Details> {
                             fontWeight: FontWeight.bold,
                             color: Colors.deepOrange.shade700,
                           ),
-                          //w
-                          // Wrap(
-                          //   spacing: 8,
-                          //   children: [
-                          //     badge("Brand", data['brand']),
-                          //     badge("Category", data['category']),
-                          //     badge("SKU", data['sku']),
-                          //     badge("Stock", data['stock'].toString()),
-                          //   ],
-                          // ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -170,7 +163,6 @@ class _DetailsState extends State<Details> {
                               ),
                             ],
                           ),
-
 
                           // Price Box
                           Container(
@@ -211,30 +203,6 @@ class _DetailsState extends State<Details> {
                                 ),
                               ),
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                               SizedBox(width: 6),
                               CustomText(
                                 text: "(${data['review_count']})",
@@ -258,6 +226,23 @@ class _DetailsState extends State<Details> {
                             color: Colors.black87,
                             fontSize: 14,
                           ),
+                          SizedBox(height: 20),
+                          CustomButton_widget(
+                            title: "Cheackout",
+                            onTap: () {
+                              log("====== DA : $data=======");
+                              Map pData = {
+                                "id": data['id'],
+                                "title": data['title'],
+                                "brand": data['brand'],
+                                "price": data['price'],
+                                "old_price": data['old_price'],
+                                "image": data['image'],
+                              };
+
+                              Navigator.push(context, MaterialPageRoute(builder: (c)=> CheckoutScreen(productData: pData)));
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -265,26 +250,6 @@ class _DetailsState extends State<Details> {
                 ),
               ],
             ),
-    );
-  }
-
-  //
-  Widget badge(String title, String value) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: BoxDecoration(
-        color: Colors.pink.withOpacity(.2),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.pink.shade300),
-      ),
-      child: Text(
-        "$title: $value",
-        style: TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: 12,
-          color: Colors.red.shade700,
-        ),
-      ),
     );
   }
 }

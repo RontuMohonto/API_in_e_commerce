@@ -24,7 +24,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     FlutterSecureStorage storage = FlutterSecureStorage();
     var d = await storage.read(key: "shipping");
     if (d != null) {
-      userData = jsonDecode(d);
+      if (d != null) {
+        userData = jsonDecode(d);
+      }
+      setState(() {});
     }
     setState(() {});
   }
@@ -80,12 +83,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 ),
                 SizedBox(width: 181),
                 InkWell(
-                    onTap: (){
-                      log("===== Pressed ..!========");
-                      FlutterSecureStorage storage = FlutterSecureStorage();
-                      storage.delete(key: "shipping");
-                    },
-                    child: Icon(Icons.delete, color: Colors.red, size: 25)),
+                  onTap: () {
+                    log("===== Pressed ..!========");
+                    FlutterSecureStorage storage = FlutterSecureStorage();
+                    storage.delete(key: "shipping");
+                  },
+                  child: Icon(Icons.delete, color: Colors.red, size: 25),
+                ),
               ],
             ),
             const SizedBox(height: 10),
@@ -98,7 +102,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         MaterialPageRoute(builder: (_) => ShippingScreen()),
                       ).then((_) => getUserData());
                     },
-                    child:Container(
+                    child: Container(
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
@@ -110,14 +114,17 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             offset: Offset(0, 4),
                           ),
                         ],
-                        border: Border.all(color: Colors.green.shade900,),
+                        border: Border.all(color: Colors.green.shade900),
                       ),
                       child: Center(
                         child: Column(
                           spacing: 10,
                           children: [
-                            Icon(Icons.add_circle_outline,
-                                size: 40, color: Colors.green.shade900),
+                            Icon(
+                              Icons.add_circle_outline,
+                              size: 40,
+                              color: Colors.green.shade900,
+                            ),
                             CustomText(
                               text: "Add Shipping Information",
                               fontSize: 16,
@@ -127,10 +134,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           ],
                         ),
                       ),
-                    )
-
-
-            )
+                    ),
+                  )
                 : Stack(
                     children: [
                       Container(
@@ -202,9 +207,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                               MaterialPageRoute(
                                 builder: (_) => ShippingScreen(),
                               ),
-                            ).then((_) => getUserData());
+                            ).then((c) => getUserData());
                           },
-                          child: Icon(Icons.edit, color: Colors.blueAccent),
+                          child: Icon(Icons.edit, color: Colors.blue),
                         ),
                       ),
                     ],
@@ -214,9 +219,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
             //product card
             CustomText(
-              text: "Product",
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
+              text: "Products...",
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Colors.green.shade900,
             ),
             const SizedBox(height: 10),
 
@@ -224,7 +230,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: Colors.white,
+                gradient: LinearGradient(
+                  colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.08),
@@ -259,10 +269,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       children: [
                         CustomText(
                           text: "${product['title']}",
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
                         ),
-                        CustomText(text: "Brand: ${product['brand']}"),
+                        CustomText(
+                          text: "Brand: ${product['brand']}",
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22,
+                        ),
                         Row(
                           spacing: 10,
                           children: [
