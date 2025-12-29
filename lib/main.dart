@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       builder: EasyLoading.init(),
       debugShowCheckedModeBanner: false,
-      home: OrderScreen(),
+      home: home(),
     );
   }
 }

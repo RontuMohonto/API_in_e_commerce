@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import '../../controller/Selling_items/selling_items.dart';
 import '../../controller/category/categoryController.dart';
 import '../../controller/slider/slider.dart';
+import '../Order/UI.dart';
 
 class home extends StatefulWidget {
   const home({super.key});
@@ -76,6 +77,21 @@ class _homeState extends State<home> {
           fontSize: 20,
           fontWeight: FontWeight.bold,
         ),
+        actions: [
+          SizedBox(
+            width: 45,
+            child: InkWell(
+              onTap: () {
+                log("===Pressed .!====");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => OrderScreen()),
+                );
+              },
+              child: Icon(Icons.history, color: Colors.white),
+            ),
+          ),
+        ],
       ),
       backgroundColor: Colors.white,
       body: isLoading == true
