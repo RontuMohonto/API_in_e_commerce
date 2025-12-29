@@ -70,11 +70,23 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // informations
-            CustomText(
-              text: "Shipping Information",
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.green.shade900,
+            Row(
+              children: [
+                CustomText(
+                  text: "Shipping Information",
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green.shade900,
+                ),
+                SizedBox(width: 181),
+                InkWell(
+                    onTap: (){
+                      log("===== Pressed ..!========");
+                      FlutterSecureStorage storage = FlutterSecureStorage();
+                      storage.delete(key: "shipping");
+                    },
+                    child: Icon(Icons.delete, color: Colors.red, size: 25)),
+              ],
             ),
             const SizedBox(height: 10),
 
