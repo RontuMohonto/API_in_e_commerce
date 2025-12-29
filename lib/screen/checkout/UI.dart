@@ -284,13 +284,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           children: [
                             CustomText(
                               text: "BDT ${product['price']}",
-                              fontSize: 16,
+                              color: Colors.white,
+                              fontSize: 25,
                               fontWeight: FontWeight.bold,
                             ),
                             CustomText(
                               text: "${product['old_price']}",
                               decorationText: TextDecoration.lineThrough,
-                              color: Colors.grey,
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
                             ),
                           ],
                         ),
