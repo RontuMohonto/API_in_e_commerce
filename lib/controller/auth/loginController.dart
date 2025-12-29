@@ -14,7 +14,7 @@ class LoginController {
 
       var headers = {"Accept": "application/json"};
 
-      Uri url = Uri.parse("https://b4.coderangon.com/api/login");  //eplay of b4
+      Uri url = Uri.parse("https://b4.coderangon.com/api/login"); //eplay of b4
       var response = await http.post(url, body: body, headers: headers);
 
       if (response.statusCode == 200) {
@@ -28,6 +28,7 @@ class LoginController {
       } else if (response.statusCode == 422) {
         EasyLoading.showError("Invalid Details");
         return false;
+        EasyLoading.dismiss();
       }
     } catch (e) {
       log("====== Error : $e ======");

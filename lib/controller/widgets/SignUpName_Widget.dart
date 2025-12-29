@@ -21,9 +21,15 @@ class NameFormField extends StatelessWidget {
         fillColor: Colors.white,
         filled: true,
         hintText: "please enter your $title",
-        border: OutlineInputBorder(
-
-            borderRadius: BorderRadius.circular(10)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: BorderSide(color: Colors.green.shade900),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: BorderSide(color: Colors.green.shade900),
+        ),
       ),
     );
   }

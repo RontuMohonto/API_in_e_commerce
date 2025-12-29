@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
 import '../../controller/Checkout/CheckOut_Controller.dart';
 import '../../controller/widgets/text.dart';
 import '../Shipping_info/UI.dart';
@@ -25,17 +23,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   getUserData() async {
     FlutterSecureStorage storage = FlutterSecureStorage();
     var d = await storage.read(key: "shipping");
-    log("======D : $d");
     if (d != null) {
       userData = jsonDecode(d);
-      log("======userData : ${userData['name']}");
     }
     setState(() {});
   }
 
   getProductData() async {
     product = widget.productData;
-    log("==PPP : ${product}");
     setState(() {});
   }
 
@@ -49,153 +44,206 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
+
       appBar: AppBar(
-        centerTitle: true,
-        title: CustomText(text: "Checkout", fontSize: 25, color: Colors.black),
-        actions: [
-          InkWell(
-            onTap: () {
-              FlutterSecureStorage storage = FlutterSecureStorage();
-              storage.delete(key: "shipping");
-            },
-            child: Icon(Icons.delete),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFFFF4F4F),
+                Color(0xFFFF9A37)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
-        ],
+        ),
+        centerTitle: true,
+        title: CustomText(
+          text: "Checkout",
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText(text: "Shipping Information", fontSize: 20),
+
+            // informations
+            CustomText(
+              text: "Shipping Information",
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+            const SizedBox(height: 10),
+
             userData.isEmpty
                 ? InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ShippingScreen(),
+                  ),
+                ).then((_) => getUserData());
+              },
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey.shade400),
+                  color: Colors.white,
+                ),
+                child: Center(
+                  child: Column(
+                    spacing: 8,
+                    children: [
+                      Icon(Icons.add_circle_outline, size: 35),
+                      CustomText(
+                        text: "Add Shipping Information",
+                        fontSize: 16,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
+                : Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  margin: const EdgeInsets.only(bottom: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.08),
+                        blurRadius: 6,
+                        offset: Offset(0, 3),
+                      )
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 8,
+                    children: [
+                      Row(
+                        children: [
+                          CustomText(text: "Name: "),
+                          Expanded(child: CustomText(text: "${userData['name']}")),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          CustomText(text: "Phone: "),
+                          Expanded(child: CustomText(text: "${userData['phone']}")),
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText(text: "Address: "),
+                          Expanded(
+                            child: CustomText(
+                              text:
+                              "${userData['street']}, ${userData['upazila']}, ${userData['district']}",
+                              maxLines: 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: InkWell(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ShippingScreen(),
+                          builder: (_) => ShippingScreen(),
                         ),
-                      ).then((b) {
-                        getUserData();
-                      });
+                      ).then((_) => getUserData());
                     },
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                              spacing: 10,
-                              children: [
-                                Icon(Icons.add_box_rounded),
-                                CustomText(text: "Add Shipping Information"),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                : Stack(
-                    children: [
-                      Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  CustomText(text: "Name : "),
-                                  Expanded(
-                                    child: CustomText(
-                                      text: "${userData['name']}",
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  CustomText(text: "Phone : "),
-                                  Expanded(
-                                    child: CustomText(
-                                      text: "${userData['phone']}",
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomText(text: "Address : "),
-                                  Expanded(
-                                    child: CustomText(
-                                      text:
-                                          "${userData['street']}, ${userData['upazila']}, ${userData['district']}",
-                                      maxLines: 3,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                    child: Icon(Icons.edit, color: Colors.blueAccent),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 20),
+
+            //product card
+            CustomText(
+              text: "Product",
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+            const SizedBox(height: 10),
+
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.08),
+                    blurRadius: 6,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: Row(
+                spacing: 16,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      height: 90,
+                      width: 90,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                            "https://eplay.coderangon.com/storage/${product['image']}",
                           ),
                         ),
                       ),
-                      Positioned(
-                        top: 5,
-                        right: 5,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ShippingScreen(),
-                              ),
-                            ).then((v) {
-                              getUserData();
-                            });
-                          },
-                          child: Icon(Icons.edit_note),
-                        ),
-                      ),
-                    ],
-                  ),
-
-            SizedBox(height: 20),
-            CustomText(text: "Products", fontSize: 20),
-            Card(
-              child: Row(
-                spacing: 20,
-                children: [
-                  Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: NetworkImage(
-                          "https://eplay.coderangon.com/storage/${product['image']}",
-                        ),
-                      ),
                     ),
                   ),
+
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 6,
                       children: [
-                        CustomText(text: "${product['title']}"),
-                        CustomText(text: "brand : ${product['brand']}"),
+                        CustomText(
+                          text: "${product['title']}",
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        CustomText(text: "Brand: ${product['brand']}"),
                         Row(
                           spacing: 10,
                           children: [
                             CustomText(
                               text: "BDT ${product['price']}",
                               fontSize: 16,
+                              fontWeight: FontWeight.bold,
                             ),
                             CustomText(
-                              text: " ${product['old_price']}",
+                              text: "${product['old_price']}",
                               decorationText: TextDecoration.lineThrough,
+                              color: Colors.grey,
                             ),
                           ],
                         ),
@@ -205,9 +253,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 ],
               ),
             ),
-            Spacer(),
+
+            const Spacer(),
+
+            //button disi ekhane
             CustomButton_widget(
-              title: "Checkout",
+              title: "Confirm Checkout",
               onTap: () async {
                 var checkout = {
                   "customer_name": userData['name'],
@@ -227,12 +278,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     "district": userData['district'],
                   },
                 };
-                log("========Check : ${jsonEncode(checkout)}=====");
-                bool status = await CheckOutService().sentData(data: checkout);
+
+                log("Checkout: ${jsonEncode(checkout)}");
+
+                bool status =
+                await CheckOutService().sentData(data: checkout);
+
                 if (status == true) {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => home()),
+                    MaterialPageRoute(builder: (_) => home()),
                   );
                 }
               },

@@ -50,14 +50,11 @@ class _LoginState extends State<ShippingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Color(0xFFFF4F4F),
-                Color(0xFFFF9A37)],
+              colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
