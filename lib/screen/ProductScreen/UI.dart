@@ -133,7 +133,7 @@ class _ProductScreenState extends State<ProductScreen> {
 
           CustomButton_widget(title: "Cheackout", onTap: (){
 
-            Navigator.push(context, MaterialPageRoute(builder: (c)=> CheckoutScreen(productData: {},)));
+            Navigator.push(context, MaterialPageRoute(builder: (c)=> CheckoutScreen(productData: {})));
           })
         ],
       ),

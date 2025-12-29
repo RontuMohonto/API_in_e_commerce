@@ -330,15 +330,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 };
 
                 log("Checkout: ${jsonEncode(checkout)}");
+                await CheckOutService().sentData(data: checkout);
 
-                bool status = await CheckOutService().sentData(data: checkout);
-
-                if (status == true) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (_) => home()),
-                  );
-                }
               },
             ),
           ],
