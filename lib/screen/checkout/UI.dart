@@ -50,9 +50,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Color(0xFFFF4F4F),
-                Color(0xFFFF9A37)],
+              colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -67,117 +65,125 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // informations
             CustomText(
               text: "Shipping Information",
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Colors.green.shade900,
             ),
             const SizedBox(height: 10),
 
             userData.isEmpty
                 ? InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => ShippingScreen(),
-                  ),
-                ).then((_) => getUserData());
-              },
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey.shade400),
-                  color: Colors.white,
-                ),
-                child: Center(
-                  child: Column(
-                    spacing: 8,
-                    children: [
-                      Icon(Icons.add_circle_outline, size: 35),
-                      CustomText(
-                        text: "Add Shipping Information",
-                        fontSize: 16,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            )
-                : Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(16),
-                  margin: const EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.08),
-                        blurRadius: 6,
-                        offset: Offset(0, 3),
-                      )
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 8,
-                    children: [
-                      Row(
-                        children: [
-                          CustomText(text: "Name: "),
-                          Expanded(child: CustomText(text: "${userData['name']}")),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          CustomText(text: "Phone: "),
-                          Expanded(child: CustomText(text: "${userData['phone']}")),
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomText(text: "Address: "),
-                          Expanded(
-                            child: CustomText(
-                              text:
-                              "${userData['street']}, ${userData['upazila']}, ${userData['district']}",
-                              maxLines: 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-
-                Positioned(
-                  top: 10,
-                  right: 10,
-                  child: InkWell(
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (_) => ShippingScreen(),
-                        ),
+                        MaterialPageRoute(builder: (_) => ShippingScreen()),
                       ).then((_) => getUserData());
                     },
-                    child: Icon(Icons.edit, color: Colors.blueAccent),
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: Colors.grey.shade400),
+                      ),
+                      child: Center(
+                        child: Column(
+                          spacing: 8,
+                          children: [
+                            Icon(Icons.add_circle_outline, size: 35),
+                            CustomText(
+                              text: "Add Shipping Information",
+                              fontSize: 16,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                : Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        margin: const EdgeInsets.only(bottom: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.green.shade100,
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.08),
+                              blurRadius: 6,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: 8,
+                          children: [
+                            Row(
+                              children: [
+                                CustomText(text: "Name    : "),
+                                Expanded(
+                                  child: CustomText(
+                                    text: "${userData['name']}",
+                                    color: Colors.green.shade900,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                CustomText(text: "Phone   : "),
+                                Expanded(
+                                  child: CustomText(
+                                    text: "${userData['phone']}",
+                                    color: Colors.green.shade900,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomText(text: "Address: "),
+                                Expanded(
+                                  child: CustomText(
+                                    text:
+                                        "${userData['street']}, ${userData['upazila']}, ${userData['district']}",
+                                    color: Colors.green.shade900,
+                                    maxLines: 3,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Positioned(
+                        top: 10,
+                        right: 10,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => ShippingScreen(),
+                              ),
+                            ).then((_) => getUserData());
+                          },
+                          child: Icon(Icons.edit, color: Colors.blueAccent),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            ),
 
             const SizedBox(height: 20),
 
@@ -281,8 +287,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
                 log("Checkout: ${jsonEncode(checkout)}");
 
-                bool status =
-                await CheckOutService().sentData(data: checkout);
+                bool status = await CheckOutService().sentData(data: checkout);
 
                 if (status == true) {
                   Navigator.pushReplacement(
