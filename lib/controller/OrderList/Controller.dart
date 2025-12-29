@@ -3,16 +3,16 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 class OrderListController {
-  Future<bool> getData({required String phone}) async {
+  Future<List> getData({required String phone}) async {
     try {
       Uri url = Uri.parse("https://eplay.coderangon.com/api/orders/${phone}");
       var response = await http.get(url);
       if (response.statusCode == 200) {
-        return true;
+        return [];
       }
     } catch (e) {
       log("Error : $e");
     }
-    return false;
+    return [];
   }
 }

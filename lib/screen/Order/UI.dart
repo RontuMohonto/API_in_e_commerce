@@ -1,3 +1,4 @@
+import 'package:dada_garments_full_with_api/controller/OrderList/Controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../controller/widgets/text.dart';
@@ -10,11 +11,12 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  List<Map> OrderData = [];
+  List OrderData = [];
 
   fetchData() async {
-    
+    OrderData = await OrderListController().getData(phone: "01871232838");
   }
+
   @override
   void initState() {
     fetchData();
