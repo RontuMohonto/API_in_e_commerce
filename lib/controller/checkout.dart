@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
-class CheckOutController {
+class CheckOutService {
   Future<bool> sentData({required Map data}) async {
     try {
       Uri url = Uri.parse("https://eplay.coderangon.com/api/order");
@@ -12,7 +12,8 @@ class CheckOutController {
         "Accept": "application/json",
         "content-type": "application/json",
       };
-      var response = http.post(url, body: body, headers: header);
+      var response = await http.post(url, body: body, headers: header);
+      log("=====${response.statusCode}==========");
     } catch (e) {
       log("===Error : $e======");
     }

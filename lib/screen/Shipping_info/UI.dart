@@ -25,6 +25,21 @@ class _ShippingScreenState extends State<ShippingScreen> {
   bool isLoading = false;
   Map userData = {};
 
+  getUserData() async {
+    FlutterSecureStorage storage = FlutterSecureStorage();
+    var d = await storage.read(key: "shipping");
+    log("===D : $d===========");
+    if (d != null) {
+      userData = jsonDecode(d);
+      log("===userData : ${userData['name']}======");
+      nameC.text = userData['name'];
+      phoneC.text = userData['phone'];
+      streetC.text = userData['street'];
+      upazillaC.text = userData['upazilla'];
+      districtC.text = userData['district'];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
