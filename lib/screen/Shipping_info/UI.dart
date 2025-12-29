@@ -22,6 +22,8 @@ class _ShippingScreenState extends State<ShippingScreen> {
   TextEditingController streetC = TextEditingController();
   TextEditingController upazillaC = TextEditingController();
   TextEditingController districtC = TextEditingController();
+  bool isLoading = false;
+  Map userData ={};
 
   @override
   Widget build(BuildContext context) {
@@ -48,92 +50,95 @@ class _ShippingScreenState extends State<ShippingScreen> {
       body: Form(
         key: _formkey,
         child: SingleChildScrollView(
-          child: Column(
-            spacing: 10,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomText(
-                text: "Let's Start",
-                color: Colors.black,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-              SizedBox(height: 5),
-              //Name
-              NameFormField(
-                nameC: nameC,
-                validator: (v) {
-                  if (v == null || v == "") {
-                    return "Please enter Name";
-                  }
-                  return null;
-                },
-                title: "name",
-              ),
-              //Phone
-              NameFormField(
-                nameC: phoneC,
-                validator: (v) {
-                  if (v == null || v == "") {
-                    return "Please enter Phone";
-                  }
-                  return null;
-                },
-                title: "Phone",
-              ),
-              //Street
-              NameFormField(
-                nameC: streetC,
-                validator: (v) {
-                  if (v == null || v == "") {
-                    return "Please enter Phone";
-                  }
-                  return null;
-                },
-                title: "Street",
-              ),
-              //"Upazila
-              NameFormField(
-                nameC: upazillaC,
-                validator: (v) {
-                  if (v == null || v == "") {
-                    return "Please enter Phone";
-                  }
-                  return null;
-                },
-                title: "Upazilla",
-              ),
-              //District
-              NameFormField(
-                nameC: districtC,
-                validator: (v) {
-                  if (v == null || v == "") {
-                    return "Please enter District";
-                  }
-                  return null;
-                },
-                title: "District",
-              ),
-              CustomButton_widget(
-                title: "Next",
-                onTap: () async {
-                  if (!_formkey.currentState!.validate()) {
-                    return;
-                  }
-                  var data = {
-                    "name": nameC.text,
-                    "phone": phoneC.text,
-                    "street": streetC.text,
-                    "upazilla": upazillaC.text,
-                    "district": districtC.text,
-                  };
-                  log("====${data}====");
-                  FlutterSecureStorage storage = FlutterSecureStorage();
-                  await storage.write(key: "shipping", value: jsonEncode(data));
-                  Navigator.pop(context);
-                },
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              spacing: 10,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
+                  text: "Let's Start",
+                  color: Colors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+                SizedBox(height: 5),
+                //Name
+                NameFormField(
+                  nameC: nameC,
+                  validator: (v) {
+                    if (v == null || v == "") {
+                      return "Please enter Name";
+                    }
+                    return null;
+                  },
+                  title: "name",
+                ),
+                //Phone
+                NameFormField(
+                  nameC: phoneC,
+                  validator: (v) {
+                    if (v == null || v == "") {
+                      return "Please enter Phone";
+                    }
+                    return null;
+                  },
+                  title: "Phone",
+                ),
+                //Street
+                NameFormField(
+                  nameC: streetC,
+                  validator: (v) {
+                    if (v == null || v == "") {
+                      return "Please enter Phone";
+                    }
+                    return null;
+                  },
+                  title: "Street",
+                ),
+                //"Upazila
+                NameFormField(
+                  nameC: upazillaC,
+                  validator: (v) {
+                    if (v == null || v == "") {
+                      return "Please enter Phone";
+                    }
+                    return null;
+                  },
+                  title: "Upazilla",
+                ),
+                //District
+                NameFormField(
+                  nameC: districtC,
+                  validator: (v) {
+                    if (v == null || v == "") {
+                      return "Please enter District";
+                    }
+                    return null;
+                  },
+                  title: "District",
+                ),
+                CustomButton_widget(
+                  title: "Next",
+                  onTap: () async {
+                    if (!_formkey.currentState!.validate()) {
+                      return;
+                    }
+                    var data = {
+                      "name": nameC.text,
+                      "phone": phoneC.text,
+                      "street": streetC.text,
+                      "upazilla": upazillaC.text,
+                      "district": districtC.text,
+                    };
+                    log("====${data}====");
+                    FlutterSecureStorage storage = FlutterSecureStorage();
+                    await storage.write(key: "shipping", value: jsonEncode(data));
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
