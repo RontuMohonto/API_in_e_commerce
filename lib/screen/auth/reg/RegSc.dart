@@ -136,7 +136,7 @@ class _RegPageState extends State<RegPage> {
                     onTap: () async {
                       if (!_formKey.currentState!.validate()) return;
 
-                      var data = {
+                      var userdata = {
                         "name": nameC.text,
                         "phone": numberC.text,
                         "password": passC.text,
@@ -146,7 +146,7 @@ class _RegPageState extends State<RegPage> {
                       setState(() {});
 
                       bool status = await RegController().CreateAccoutFunction(
-                        data: data,
+                        data: userdata,
                       );
 
                       isLoading = false;
