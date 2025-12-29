@@ -23,7 +23,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
   TextEditingController upazillaC = TextEditingController();
   TextEditingController districtC = TextEditingController();
   bool isLoading = false;
-  Map userData ={};
+  Map userData = {};
 
   @override
   Widget build(BuildContext context) {
@@ -124,16 +124,19 @@ class _ShippingScreenState extends State<ShippingScreen> {
                     if (!_formkey.currentState!.validate()) {
                       return;
                     }
-                    var data = {
+                    var CKdata = {
                       "name": nameC.text,
                       "phone": phoneC.text,
                       "street": streetC.text,
                       "upazilla": upazillaC.text,
                       "district": districtC.text,
                     };
-                    log("====${data}====");
+                    log("====${CKdata}====");
                     FlutterSecureStorage storage = FlutterSecureStorage();
-                    await storage.write(key: "shipping", value: jsonEncode(data));
+                    await storage.write(
+                      key: "shipping",
+                      value: jsonEncode(CKdata),
+                    );
                     Navigator.pop(context);
                   },
                 ),

@@ -1,11 +1,17 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
 class CheckOutController {
-  Future<bool> sentData() async {
+  Future<bool> sentData({required Map data}) async {
     try {
       Uri url = Uri.parse("https://eplay.coderangon.com/api/order");
+      var body = jsonEncode(data);
+      var header = {
+        "Accept": "application/json",
+        "content-type": "application/json",
+      };
     } catch (e) {
       log("===Error : $e======");
     }
