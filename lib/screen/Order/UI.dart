@@ -40,7 +40,7 @@ class _OrderScreenState extends State<OrderScreen> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               gradient: LinearGradient(
-                colors: [Colors.green.shade600, Colors.green.shade500],
+                colors: [Colors.green.shade200, Colors.green.shade50],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -60,20 +60,29 @@ class _OrderScreenState extends State<OrderScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomText(text: "Order ID", color: Colors.white),
+                      CustomText(text: "Order ID", color: Colors.black),
 
-                      CustomText(text: "COD", color: Colors.white),
+                      CustomText(text: "COD", color: Colors.black),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomText(text: "Rontu Mohonto ", color: Colors.white),
                       Row(
                         spacing: 4,
                         children: [
-                          Icon(Icons.call),
-                          CustomText(text: "01871232838 ", color: Colors.white),
+                          Icon(Icons.person),
+                          CustomText(
+                            text: "Rontu Mohonto ",
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        spacing: 4,
+                        children: [
+                          Icon(Icons.call, color: Colors.black),
+                          CustomText(text: "01871232838 ", color: Colors.black),
                         ],
                       ),
                     ],
@@ -81,7 +90,16 @@ class _OrderScreenState extends State<OrderScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomText(text: "Dhaka,Bangladesh", color: Colors.white),
+                      Row(
+                        spacing: 4,
+                        children: [
+                          Icon(Icons.location_on, color: Colors.black),
+                          CustomText(
+                            text: "Dhaka,Bangladesh",
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
                       Row(
                         spacing: 4,
                         children: [
@@ -91,7 +109,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
-                          CustomText(text: "1500", color: Colors.white),
+                          CustomText(text: "1500", color: Colors.black),
                         ],
                       ),
                     ],
