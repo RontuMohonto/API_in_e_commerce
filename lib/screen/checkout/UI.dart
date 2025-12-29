@@ -98,26 +98,39 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         MaterialPageRoute(builder: (_) => ShippingScreen()),
                       ).then((_) => getUserData());
                     },
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
+                    child:Container(
+                      padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.circular(16),
+
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.06),
+                            blurRadius: 10,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                        border: Border.all(color: Colors.green.shade900,),
                       ),
                       child: Center(
                         child: Column(
-                          spacing: 8,
+                          spacing: 10,
                           children: [
-                            Icon(Icons.add_circle_outline, size: 35),
+                            Icon(Icons.add_circle_outline,
+                                size: 40, color: Colors.green.shade900),
                             CustomText(
                               text: "Add Shipping Information",
                               fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green.shade500,
                             ),
                           ],
                         ),
                       ),
-                    ),
-                  )
+                    )
+
+
+            )
                 : Stack(
                     children: [
                       Container(

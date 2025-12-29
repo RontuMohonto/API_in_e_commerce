@@ -73,93 +73,104 @@ class _LoginState extends State<ShippingScreen> {
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
-            child: Column(
-              spacing: 10,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomText(
-                  text: "Let's Start",
-                  fontSize: 22,
-                  color: Colors.black,
-                ),
-                SizedBox(height: 5),
-                NameFormField(
-                  nameC: nameC,
-                  validator: (v) {
-                    if (v == null || v == "") {
-                      return "Please enter Name";
-                    }
-                    return null;
-                  },
-                  title: 'Name',
-                ),
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Column(
+                spacing: 16,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    text: "Let's Start",
+                    fontSize: 22,
+                    color: Colors.green.shade500,
+                  ),
+                  CustomText(
+                    text: "Provide your shipping informations bellow...",
+                    fontSize: 22,
+                    color: Colors.green.shade300,
+                  ),
+                  SizedBox(height: 5),
+                  NameFormField(
+                    nameC: nameC,
+                    validator: (v) {
+                      if (v == null || v == "") {
+                        return "Please enter Name";
+                      }
+                      return null;
+                    },
+                    title: 'Name',
+                  ),
 
-                NameFormField(
-                  nameC: phoneC,
-                  validator: (v) {
-                    if (v == null || v == "") {
-                      return "Please enter Phone";
-                    }
-                    return null;
-                  },
-                  title: 'Phone',
-                ),
-                NameFormField(
-                  nameC: streetC,
-                  validator: (v) {
-                    if (v == null || v == "") {
-                      return "Please enter Street";
-                    }
-                    return null;
-                  },
-                  title: 'Street',
-                ),
-                NameFormField(
-                  nameC: upazilaC,
-                  validator: (v) {
-                    if (v == null || v == "") {
-                      return "Please enter Upazela";
-                    }
-                    return null;
-                  },
-                  title: 'Upazela',
-                ),
-                NameFormField(
-                  nameC: districtC,
-                  validator: (v) {
-                    if (v == null || v == "") {
-                      return "Please enter District";
-                    }
-                    return null;
-                  },
-                  title: 'District',
-                ),
+                  NameFormField(
+                    nameC: phoneC,
+                    validator: (v) {
+                      if (v == null || v == "") {
+                        return "Please enter Phone";
+                      }
+                      return null;
+                    },
+                    title: 'Phone',
+                  ),
+                  NameFormField(
+                    nameC: streetC,
+                    validator: (v) {
+                      if (v == null || v == "") {
+                        return "Please enter Street";
+                      }
+                      return null;
+                    },
+                    title: 'Street',
+                  ),
+                  NameFormField(
+                    nameC: upazilaC,
+                    validator: (v) {
+                      if (v == null || v == "") {
+                        return "Please enter Upazela";
+                      }
+                      return null;
+                    },
+                    title: 'Upazela',
+                  ),
+                  NameFormField(
+                    nameC: districtC,
+                    validator: (v) {
+                      if (v == null || v == "") {
+                        return "Please enter District";
+                      }
+                      return null;
+                    },
+                    title: 'District',
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
 
-                isLoading == true
-                    ? Center(child: CircularProgressIndicator())
-                    : CustomButton_widget(
-                        title: 'Next',
-                        onTap: () async {
-                          if (!_formKey.currentState!.validate()) {
-                            return;
-                          }
-                          var data = {
-                            "name": nameC.text,
-                            "phone": phoneC.text,
-                            "street": streetC.text,
-                            "upazila": upazilaC.text,
-                            "district": districtC.text,
-                          };
-                          log("===========${data}==");
-                          FlutterSecureStorage storage = FlutterSecureStorage();
-                          await storage.write(
-                            key: "shipping",
-                            value: jsonEncode(data),
-                          );
-                          Navigator.pop(context);
-                        },
-                      ),
-              ],
+                  isLoading == true
+                      ? Center(child: CircularProgressIndicator())
+                      : CustomButton_widget(
+                          title: 'Next',
+                          onTap: () async {
+                            if (!_formKey.currentState!.validate()) {
+                              return;
+                            }
+                            var data = {
+                              "name": nameC.text,
+                              "phone": phoneC.text,
+                              "street": streetC.text,
+                              "upazila": upazilaC.text,
+                              "district": districtC.text,
+                            };
+                            log("===========${data}==");
+                            FlutterSecureStorage storage = FlutterSecureStorage();
+                            await storage.write(
+                              key: "shipping",
+                              value: jsonEncode(data),
+                            );
+                            Navigator.pop(context);
+                          },
+                        ),
+                ],
+              ),
             ),
           ),
         ),
