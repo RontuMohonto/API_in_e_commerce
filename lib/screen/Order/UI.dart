@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dada_garments_full_with_api/controller/OrderList/Controller.dart';
+import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../controller/widgets/text.dart';
@@ -31,7 +32,6 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       //appbar
       appBar: AppBar(
         flexibleSpace: Container(
@@ -55,35 +55,54 @@ class _OrderScreenState extends State<OrderScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: searchController,
-              decoration: InputDecoration(
-                suffixIcon: Icon(Icons.search),
-                hintText: "Search hare...",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(
-                    width: 1,
-                    color: Colors.green.shade900,
+            padding: const EdgeInsets.all(14.0),
+            child: Row(
+              spacing: 6,
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.search),
+                      hintText: "Search hare...",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.green.shade900,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.green.shade900,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.green.shade900,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(
-                    width: 1,
-                    color: Colors.green.shade900,
+
+                Expanded(
+                  flex: 1,
+                  child: CustomButton_widget(
+                    title: "search",
+                    onTap: () {
+                      log("====Clicked=====");
+                    },
                   ),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(
-                    width: 1,
-                    color: Colors.green.shade900,
-                  ),
-                ),
-              ),
-            ),
+              ],
+            )
+
           ),
           Expanded(
             child: ListView.builder(
