@@ -64,7 +64,7 @@ class _CartState extends State<Cart> {
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                          "https://eplay.coderangon.com/storage/{product['image']}",
+                          "https://img.freepik.com/free-photo/vertical-shot-concentrated-businessman-listening-carefully-with-crossed-hands_181624-29443.jpg?semt=ais_hybrid&w=740&q=80",
                         ),
                       ),
                     ),
@@ -92,13 +92,13 @@ class _CartState extends State<Cart> {
                         spacing: 10,
                         children: [
                           CustomText(
-                            text: "BDT {product['price']}",
+                            text: "1500",
                             color: Colors.white,
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
                           CustomText(
-                            text: "{product['old_price']}",
+                            text: "3000",
                             decorationText: TextDecoration.lineThrough,
                             color: Colors.white,
                             fontSize: 22,
