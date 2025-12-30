@@ -10,6 +10,15 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
+  fetchData() {
+
+  }
+  @override
+  void initState() {
+    fetchData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,13 +49,13 @@ class _CartState extends State<Cart> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               gradient: LinearGradient(
-                colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
+                colors: [Colors.green.shade200, Colors.green.shade50],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.08),
+                  color: Colors.black.withOpacity(0.5),
                   blurRadius: 6,
                   offset: Offset(0, 3),
                 ),
@@ -78,13 +87,13 @@ class _CartState extends State<Cart> {
                     children: [
                       CustomText(
                         text: "{product['title']}",
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                       CustomText(
                         text: "Brand: {product['brand']}",
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 22,
                       ),
@@ -93,14 +102,14 @@ class _CartState extends State<Cart> {
                         children: [
                           CustomText(
                             text: "1500",
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
                           CustomText(
                             text: "3000",
                             decorationText: TextDecoration.lineThrough,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
