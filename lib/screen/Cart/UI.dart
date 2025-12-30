@@ -112,15 +112,20 @@ class _CartState extends State<Cart> {
                               spacing: 10,
                               children: [
                                 CustomText(
-                                  text: "${CartData[index]['price']}",
+                                  text: "Total :",
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                CustomText(
+                                  text:
+                                      "${CartData[index]['price']} x ${CartData[index]['quantity']} = ",
                                   color: Colors.black,
                                   fontSize: 25,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 CustomText(
                                   text: "${CartData[index]['total']}",
-                                  decorationText: TextDecoration.lineThrough,
-                                  color: Colors.black,
+                                  color: Colors.red,
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                 ),
