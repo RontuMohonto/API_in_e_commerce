@@ -50,7 +50,7 @@ class _CartState extends State<Cart> {
         ),
       ),
       body: ListView.builder(
-        itemCount: 2,
+        itemCount: CartData.length,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
@@ -82,7 +82,7 @@ class _CartState extends State<Cart> {
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                          "https://img.freepik.com/free-photo/vertical-shot-concentrated-businessman-listening-carefully-with-crossed-hands_181624-29443.jpg?semt=ais_hybrid&w=740&q=80",
+                          "https://",
                         ),
                       ),
                     ),

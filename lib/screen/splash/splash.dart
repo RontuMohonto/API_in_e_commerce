@@ -16,7 +16,7 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   TimerFunction() async {
-    late FlutterSecureStorage _storage = FlutterSecureStorage();
+     FlutterSecureStorage _storage = FlutterSecureStorage();
     var t = await _storage.read(key: "token");
 
     log("==========TT : $t======");
