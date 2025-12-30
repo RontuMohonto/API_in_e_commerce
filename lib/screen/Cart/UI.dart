@@ -10,9 +10,9 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  fetchData() {
+  List CartData = [];
 
-  }
+  fetchData() {}
   @override
   void initState() {
     fetchData();
