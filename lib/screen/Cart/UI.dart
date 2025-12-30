@@ -128,8 +128,8 @@ class _CartState extends State<Cart> {
                                   fontWeight: FontWeight.bold,
                                 ),
                                 CustomText(
-                                  text: "${CartData[index]['total']}",
-                                  color: Colors.red,
+                                  text: "৳${CartData[index]['total']}",
+                                  color: Colors.green.shade900,
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                 ),

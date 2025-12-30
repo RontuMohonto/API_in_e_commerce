@@ -28,7 +28,7 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
         decoration: BoxDecoration(
-         color: Colors.green.shade100,
+          color: Colors.green.shade100,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -42,7 +42,6 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           //picture add korsi ekane
             ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
               child: Stack(
@@ -53,8 +52,6 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
-
-                 //offer stack
                   Positioned(
                     top: 8,
                     left: 8,
@@ -72,7 +69,6 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Title add korsi ekhane
                   CustomText(
                     text: widget.AllData['title'],
                     maxLines: 1,
@@ -82,7 +78,6 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
                   ),
                   SizedBox(height: 6),
 
-                  //price add korsi ekhane
                   Row(
                     children: [
                       CustomText(
@@ -103,33 +98,39 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
                   ),
                   SizedBox(height: 12),
 
-                  // Add to cart
+                  // add cart button
                   Center(
-                    child: Container(
-                      height: 42,
-                      width: 120,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.green.shade600,
-                            Colors.green.shade400,
+                    child: GestureDetector(
+                      onTap: () {
+                       log("========= Add to cart====================");
+
+                      },
+                      child: Container(
+                        height: 42,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.green.shade600,
+                              Colors.green.shade400,
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.green.withOpacity(0.3),
+                              blurRadius: 6,
+                              offset: Offset(0, 3),
+                            ),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.green.withOpacity(0.3),
-                            blurRadius: 6,
-                            offset: Offset(0, 3),
+                        child: Center(
+                          child: CustomText(
+                            text: "Add to Cart",
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
                           ),
-                        ],
-                      ),
-                      child: Center(
-                        child: CustomText(
-                          text: "Add to Cart",
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -141,5 +142,6 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
         ),
       ),
     );
+
   }
 }
