@@ -82,7 +82,7 @@ class _CartState extends State<Cart> {
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                          "https://",
+                          "https://eplay.coderangon.com/storage/${CartData[index]['image']}",
                         ),
                       ),
                     ),
@@ -95,13 +95,13 @@ class _CartState extends State<Cart> {
                     spacing: 6,
                     children: [
                       CustomText(
-                        text: "{product['title']}",
+                        text: "${CartData[index]['title']}",
                         color: Colors.black,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                       CustomText(
-                        text: "Brand: {product['brand']}",
+                        text: "Brand: ${CartData[index]['brand']}",
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 22,
@@ -110,13 +110,13 @@ class _CartState extends State<Cart> {
                         spacing: 10,
                         children: [
                           CustomText(
-                            text: "1500",
+                            text: "${CartData[index]['price']}",
                             color: Colors.black,
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
                           CustomText(
-                            text: "3000",
+                            text: "${CartData[index]['total']}",
                             decorationText: TextDecoration.lineThrough,
                             color: Colors.black,
                             fontSize: 22,

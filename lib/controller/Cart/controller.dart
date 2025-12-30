@@ -15,10 +15,11 @@ class CartGetController {
       log("==1111111=");
       var header = {
         "Accept": "application/json",
-        "content-type": "appliction/json",
+        "Content-type": "appliction/json",
         "Authorization": "Bearer $t",
       };
       var response = await http.get(url, headers: header);
+      log("=======22222222222222====");
 
       log("===${response.statusCode}  ${response.body}======");
       if (response.statusCode == 200) {
