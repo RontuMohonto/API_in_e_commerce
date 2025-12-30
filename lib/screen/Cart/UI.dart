@@ -50,7 +50,11 @@ class _CartState extends State<Cart> {
         ),
       ),
       body: isloading == true
-          ? Center(child: CustomText(text: "Loading Cart;s..."))
+          ? Center(child: CustomText(text: "Loading Cart's..."))
+          : CartData.isEmpty
+          ? Center(
+              child: CustomText(text: "No cart found", color: Colors.black),
+            )
           : ListView.builder(
               itemCount: CartData.length,
               itemBuilder: (context, index) => Padding(
