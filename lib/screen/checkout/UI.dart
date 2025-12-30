@@ -320,31 +320,31 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             CustomButton_widget(
               title: "Confirm Checkout",
               onTap: () async {
-                var checkout = {
-                  "customer_name": userData['name'],
-                  "customer_phone": userData['phone'],
-                  "payment_method": "cod",
-                  "items": [
-                    {
-                      "product_id": product[0]['id'],
-                      "product_name": product[0]['title'],
-                      "price": product[0]['price'],
-                      "quantity": 1,
-                    },
-                  ],
-                  "address": {
-                    "street": userData['street'],
-                    "upazila": userData['upazila'],
-                    "district": userData['district'],
-                  },
-                };
+                // var checkout = {
+                //   "customer_name": userData['name'],
+                //   "customer_phone": userData['phone'],
+                //   "payment_method": "cod",
+                //   "items": [
+                //     {
+                //       "product_id": product[0]['id'],
+                //       "product_name": product[0]['title'],
+                //       "price": product[0]['price'],
+                //       "quantity": 1,
+                //     },
+                //   ],
+                //   "address": {
+                //     "street": userData['street'],
+                //     "upazila": userData['upazila'],
+                //     "district": userData['district'],
+                //   },
+                // };
 
-                log("Checkout: ${jsonEncode(checkout)}");
-                await CheckOutService().sentData(data: checkout);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => home()),
-                );
+                // log("Checkout: ${jsonEncode(checkout)}");
+                // await CheckOutService().sentData(data: checkout);
+                // Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => home()),
+                // );
               },
             ),
           ],
