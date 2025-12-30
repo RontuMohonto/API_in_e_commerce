@@ -10,7 +10,7 @@ import '../home/UI.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key, required this.productData});
-  final Map productData;
+  final List productData;
 
   @override
   State<CheckoutScreen> createState() => _CheckoutScreenState();
@@ -18,7 +18,7 @@ class CheckoutScreen extends StatefulWidget {
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
   Map userData = {};
-  Map product = {};
+  List product = [];
 
   getUserData() async {
     FlutterSecureStorage storage = FlutterSecureStorage();
@@ -231,90 +231,90 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             ),
             const SizedBox(height: 10),
             //products
-            ListView.builder(
-              itemCount: 2,
-              shrinkWrap: true,
-              itemBuilder: (context, index) => Container(
-                margin: EdgeInsets.only(bottom: 7),
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  gradient: LinearGradient(
-                    colors: [Color(0xFFFF4F4F), Color(0xFFFF9A37)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.08),
-                      blurRadius: 6,
-                      offset: Offset(0, 3),
+            Expanded(
+              child: ListView.builder(
+                itemCount: product.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) => Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    gradient: LinearGradient(
+                      colors: [Colors.green.shade200, Colors.green.shade50],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
-                  ],
-                ),
-                child: Row(
-                  spacing: 16,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        height: 90,
-                        width: 90,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                              "https://eplay.coderangon.com/storage/${product['image']}",
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.5),
+                        blurRadius: 6,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    spacing: 16,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          height: 90,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                "https://eplay.coderangon.com/storage/${product[index]['image']}",
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
 
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 6,
-                        children: [
-                          CustomText(
-                            text: "${product['title']}",
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          CustomText(
-                            text: "Brand: ${product['brand']}",
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
-                          Row(
-                            spacing: 10,
-                            children: [
-                              CustomText(
-                                text: "BDT ${product['price']}",
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              CustomText(
-                                text: "${product['old_price']}",
-                                decorationText: TextDecoration.lineThrough,
-                                color: Colors.white,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ],
-                          ),
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: 6,
+                          children: [
+                            CustomText(
+                              text: "${product[index]['title']}",
+                              color: Colors.black,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            CustomText(
+                              text: "Brand: ${product[index]['brand']}",
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                            ),
+                            Row(
+                              spacing: 10,
+                              children: [
+                                CustomText(
+                                  text: "BDT ${product[index]['price']}",
+                                  color: Colors.black,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                CustomText(
+                                  text: "${product[index]['old_price']}",
+                                  decorationText: TextDecoration.lineThrough,
+                                  color: Colors.black,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-
-            const Spacer(),
 
             //button disi ekhane
             CustomButton_widget(
@@ -326,9 +326,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   "payment_method": "cod",
                   "items": [
                     {
-                      "product_id": product['id'],
-                      "product_name": product['title'],
-                      "price": product['price'],
+                      "product_id": product[0]['id'],
+                      "product_name": product[0]['title'],
+                      "price": product[0]['price'],
                       "quantity": 1,
                     },
                   ],

@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:dada_garments_full_with_api/controller/Cart/controller.dart';
+import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
+import 'package:dada_garments_full_with_api/screen/checkout/UI.dart';
 import 'package:flutter/material.dart';
 
 import '../../controller/widgets/text.dart';
@@ -143,6 +147,22 @@ class _CartState extends State<Cart> {
                 ),
               ),
             ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          child: CustomButton_widget(
+            title: "Order Now",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => CheckoutScreen(productData: CartData),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
     );
   }
 }

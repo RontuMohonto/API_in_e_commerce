@@ -240,7 +240,13 @@ class _DetailsState extends State<Details> {
                                 "image": data['image'],
                               };
 
-                              Navigator.push(context, MaterialPageRoute(builder: (c)=> CheckoutScreen(productData: pData)));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (c) =>
+                                      CheckoutScreen(productData: [pData]),
+                                ),
+                              );
                             },
                           ),
                         ],
