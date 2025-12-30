@@ -1,3 +1,4 @@
+import 'package:dada_garments_full_with_api/controller/Cart/controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../controller/widgets/text.dart';
@@ -12,7 +13,15 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   List CartData = [];
 
-  fetchData() {}
+  bool isloading = false;
+
+  fetchData() async {
+    isloading = true;
+    CartData = await CartGetController().getdata();
+    isloading = false;
+    setState(() {});
+  }
+
   @override
   void initState() {
     fetchData();
