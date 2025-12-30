@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:dada_garments_full_with_api/controller/add_to_cart/controller.dart';
 import 'package:dada_garments_full_with_api/controller/products/product_API.dart';
 import 'package:dada_garments_full_with_api/screen/Details_products/UI.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,7 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (c) => Details(Pid: widget.AllData['id']),
-          ),
+          MaterialPageRoute(builder: (c) => Details(Pid: widget.AllData['id'])),
         );
       },
       child: Container(
@@ -55,10 +54,7 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
                   Positioned(
                     top: 8,
                     left: 8,
-                    child: Image.asset(
-                      "assets/images/offer.png",
-                      height: 42,
-                    ),
+                    child: Image.asset("assets/images/offer.png", height: 42),
                   ),
                 ],
               ),
@@ -101,9 +97,12 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
                   // add cart button
                   Center(
                     child: GestureDetector(
-                      onTap: () {
-                       log("========= Add to cart====================");
-
+                      onTap: () async {
+                        log("========= Add to cart====================");
+                        await AddToCartController().addtocart(
+                          id: widget.AllData['id'],
+                          qty: 1,
+                        );
                       },
                       child: Container(
                         height: 42,
@@ -142,6 +141,5 @@ class _Product_Card_widgetState extends State<Product_Card_widget> {
         ),
       ),
     );
-
   }
 }
