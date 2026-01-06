@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:dada_garments_full_with_api/controller/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../controller/Checkout/CheckOut_Controller.dart';
 import '../../controller/widgets/text.dart';
@@ -320,31 +321,41 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             CustomButton_widget(
               title: "Confirm Checkout",
               onTap: () async {
-                // var checkout = {
-                //   "customer_name": userData['name'],
-                //   "customer_phone": userData['phone'],
-                //   "payment_method": "cod",
-                //   "items": [
-                //     {
-                //       "product_id": product[0]['id'],
-                //       "product_name": product[0]['title'],
-                //       "price": product[0]['price'],
-                //       "quantity": 1,
-                //     },
-                //   ],
-                //   "address": {
-                //     "street": userData['street'],
-                //     "upazila": userData['upazila'],
-                //     "district": userData['district'],
-                //   },
-                // };
+                List orderItem = [];
+                for (var item in product) {
+                  var a = {
+                    "product_id": item['id'],
+                    "product_name": item['title'],
+                    "price": item['price'],
+                    "quantity": 1,
+                  };
+                  orderItem.add(a);
+                }
+                var checkout = {
+                  "customer_name": userData['name'],
+                  "customer_phone": userData['phone'],
+                  "payment_method": "cod",
+                  "items": orderItem,
+                  "address": {
+                    "street": userData['street'],
+                    "upazila": userData['upazila'],
+                    "district": userData['district'],
+                  },
+                };
 
                 // log("Checkout: ${jsonEncode(checkout)}");
-                // await CheckOutService().sentData(data: checkout);
-                // Navigator.pushReplacement(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => home()),
-                // );
+                log(
+                  "================================working==========================",
+                );
+                bool status = await CheckOutService().sentData(data: checkout);
+
+                if (status == true) {
+                  EasyLoading.showSuccess("Order Submitted..");
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => home()),
+                  );
+                }
               },
             ),
           ],
